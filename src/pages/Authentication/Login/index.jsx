@@ -24,7 +24,6 @@ const Index = () => {
             <Inputfield placeholder='Password' inputType='password' />
             <Checkbox><span style={{ color: '#fff' }}>Remember me</span>
             </Checkbox>
-            <br />
             <Button full primary text='LOGIN' />
           </form>
         </>

@@ -27,7 +27,6 @@ const Index = () => {
               <Inputfield placeholder='Confirm Password' inputType='password' />
             </div>
             <Inputfield placeholder='Transfer Pin' inputType='password' />
-            <br />
             <Button full primary text='Register' />
           </form>
         </>
