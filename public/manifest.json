@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Online Bank",
+  "name": "A simple online banking web application",
   "icons": [
     {
       "src": "favicon.ico",
