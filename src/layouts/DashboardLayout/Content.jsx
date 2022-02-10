@@ -21,11 +21,12 @@ const Container = styled.div`
   top: 64px;
   left: 250px;
   width: calc(100vw - 250px);
-  height: -webkit-calc(100%);
-  height: -moz-calc(100%);
-  min-height: calc(100vh);
+  // height: -webkit-calc(100%);
+  // height: -moz-calc(100%);
+  // min-height: calc(100vh);
   background: #efefef;
   padding: 2rem 3rem;
+  overflow-y: hidden !important;
   overflow-x: hidden !important;
 
   h1 {

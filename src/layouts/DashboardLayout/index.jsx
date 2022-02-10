@@ -10,7 +10,7 @@ const Index = (props) => {
       <Container id='container'>
         <Navbar />
         <Sidebar />
-        <Content>{props.content}</Content>
+        <Content content={props.content} />
       </Container>
     </React.Fragment>
   );
