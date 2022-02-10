@@ -1,36 +1,33 @@
 import React from 'react';
-import { Dropdown, Menu } from 'antd';
 import styled from 'styled-components';
-import { FaUser, FaSignOutAlt, FaBell, FaChevronDown } from 'react-icons/fa';
-import { useHistory } from 'react-router-dom';
-import { clearState } from '../../redux/reducers/auth/login';
-import { useDispatch } from 'react-redux';
+import {
+  FaUser,
+  FaBell,
+  FaChevronCircleLeft,
+} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+// import { clearState } from '../../redux/reducers/auth/login';
+// import { useDispatch } from 'react-redux';
 import { Logo as logo } from '../../assets/images';
 
 const Navbar = () => {
   // const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const signout = () => {
     sessionStorage.clear();
-    dispatch(clearState());
-    history.push('/login');
+    // dispatch(clearState());
+    Navigate('/login');
   };
-  const menu = (
-    <Menu>
-      <Menu.Item onClick={signout}>
-        <FaSignOutAlt className='logout' />
-        <span
-          style={{ marginLeft: '1rem', color: '#e20b8c', fontSize: '1rem' }}
-        >
-          Log out
-        </span>
-      </Menu.Item>
-    </Menu>
-  );
+
   return (
     <Container>
-      <Logo src={logo} />
+      <div className='group'>
+        <Logout onClick={signout} />
+        <h4>
+          internet<span>Banking ...</span>{' '}
+        </h4>
+      </div>
       <NavMenu>
         <NotificationIcon />
         <Avatar />
@@ -40,9 +37,7 @@ const Navbar = () => {
           {/* <p>{loggedInUser.firstName + ' ' + loggedInUser.lastName}</p>
           <span>{loggedInUser.isSuper ? 'Super Admin' : 'Sub Admin'}</span> */}
         </UserProfile>
-        <Dropdown overlay={menu}>
-          <ArrowDown />
-        </Dropdown>
+        <Logo src={logo} />
       </NavMenu>
     </Container>
   );
@@ -62,19 +57,35 @@ const Container = styled.div`
   padding: 0 4rem;
   z-index: 999;
 
+  .group {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
   h4 {
     font-weight: normal;
-    font-size: 16px;
+    font-size: 24px;
     line-height: 19px;
     text-align: center;
-    letter-spacing: 0.005em;
-    color: #e20b8c;
+    letter-spacing: 0.05em;
+    color: #e24307;
+
+    span {
+      font-weight: bold;
+    }
   }
 `;
 
-const Logo = styled.img``;
+const Logo = styled.img`
+  width: 60px;
+  height: 80%;
+  object-fit: fill;
+`;
 
 const NavMenu = styled.div`
+  position: relative;
+  height: 100%;
   display: flex;
   align-items: center;
 `;
@@ -84,6 +95,7 @@ const UserProfile = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   p {
     font-style: normal;
     font-weight: bold;
@@ -92,7 +104,7 @@ const UserProfile = styled.div`
     text-align: center;
     letter-spacing: 0.001em;
     color: #666666;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.4em !important;
   }
   span {
     font-style: normal;
@@ -107,8 +119,9 @@ const UserProfile = styled.div`
 
 const NotificationIcon = styled(FaBell)`
   margin-right: 2.5rem;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #e24307;
   cursor: pointer;
 
   :hover {
@@ -119,14 +132,16 @@ const NotificationIcon = styled(FaBell)`
 
 const Avatar = styled(FaUser)`
   margin-right: 0.5rem;
-  width: 40px;
-  height: 40px;
+  width: 2rem;
+  height: 2rem;
+  color: #e24307;
 `;
 
-const ArrowDown = styled(FaChevronDown)`
+const Logout = styled(FaChevronCircleLeft)`
   cursor: pointer;
-  width: 1rem;
-  height: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #e24307;
   :hover {
     transform: scale(1.1);
     transition: 0.2s all ease-in-out;
