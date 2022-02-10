@@ -120,7 +120,7 @@ export const RightFrame = styled.div`
 
   form {
     margin-top: 2rem;
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
@@ -137,8 +137,7 @@ export const RightFrame = styled.div`
     .group {
       width: 100%;
       display: flex;
-      flex-direction: column;
-      row-gap: 0.8em;
+      gap: 1em;
     }
   }
 

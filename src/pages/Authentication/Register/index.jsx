@@ -22,9 +22,11 @@ const Index = () => {
             <Inputfield placeholder='Fullname' />
             <Inputfield placeholder='Email' />
             <Inputfield placeholder='Phone Number' />
+            <div className='group'>
+              <Inputfield placeholder='Password' inputType='password' />
+              <Inputfield placeholder='Confirm Password' inputType='password' />
+            </div>
             <Inputfield placeholder='Transfer Pin' inputType='password' />
-            <Inputfield placeholder='Password' inputType='password' />
-            <Inputfield placeholder='Confirm Password' inputType='password' />
             <br />
             <Button full primary text='Register' />
           </form>
