@@ -8,7 +8,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { LoginComponent, RegisterComponent } from './pages/Authentication';
-import { Home } from './pages/Dashboard';
+import { Account, Home, Transfer } from './pages/Dashboard';
 
 function App() {
   return (
@@ -19,6 +19,8 @@ function App() {
         <Route path='/register' element={<RegisterComponent />} />
         {/* Dashboard Routes */}
         <Route path='/' element={<Home />} />
+        <Route path='/account' element={<Account />} />
+        <Route path='/transfer' element={<Transfer />} />
         {/* 404 Routes */}
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>

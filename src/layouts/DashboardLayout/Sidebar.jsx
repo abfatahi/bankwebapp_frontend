@@ -42,7 +42,7 @@ const Sidebar = () => {
           localStorage.setItem('tab', 'Accounts');
         }}
         className={activeTab === 'Accounts' ? 'active' : ''}
-        to={'/'}
+        to={'/account'}
       >
         <FaWallet className='icon' />
         <p>Accounts</p>
@@ -52,7 +52,7 @@ const Sidebar = () => {
           localStorage.setItem('tab', 'Transfers');
         }}
         className={activeTab === 'Transfers' ? 'active' : ''}
-        to={'/'}
+        to={'/transfer'}
       >
         <FaExchangeAlt className='icon' />
         <p>Transfers</p>
