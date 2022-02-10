@@ -18,4 +18,6 @@ const Index = (props) => {
 
 export default Index;
 
-const Container = styled.div``;
+const Container = styled.div`
+overflow-x: hidden !important;
+`;

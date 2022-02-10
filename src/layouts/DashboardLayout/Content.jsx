@@ -15,19 +15,18 @@ const Content = (props) => {
 export default Content;
 
 const Container = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  top: 64px;
-  left: 250px;
-  width: calc(100vw - 250px);
-  // height: -webkit-calc(100%);
-  // height: -moz-calc(100%);
-  // min-height: calc(100vh);
-  background: #efefef;
-  padding: 2rem 3rem;
-  overflow-y: hidden !important;
-  overflow-x: hidden !important;
+position: relative;
+top: 64px;
+left: 250px;
+width: calc(100vw - 250px);
+height: -webkit-calc(100vh);
+height: -moz-calc(100vh);
+min-height: 100vh;
+background: #efefef;
+padding: 2rem 3rem;
+color:#666666;
+// overflow-x: hidden !important;
+// overflow-y: scroll !important;
 
   h1 {
     font-size: 2.5rem;

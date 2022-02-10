@@ -19,8 +19,7 @@ export const transactionColumns = [
       <Space>
         {/* {new Date(text).toLocaleDateString()}, &nbsp;
         {new Date(text).toLocaleTimeString()} */}
-        {text}, &nbsp;
-        {record.time}
+        {text},{record.time}
       </Space>
     ),
   },
