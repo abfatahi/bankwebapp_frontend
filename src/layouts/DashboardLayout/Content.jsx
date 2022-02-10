@@ -16,6 +16,8 @@ export default Content;
 
 const Container = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
   top: 64px;
   left: 250px;
   width: calc(100vw - 250px);
@@ -24,8 +26,13 @@ const Container = styled.div`
   min-height: calc(100vh);
   background: #efefef;
   padding: 2rem 3rem;
-  color: #666666;
   overflow-x: hidden !important;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
 `;
 
 export const BackArrow = styled(FaChevronCircleLeft)`
