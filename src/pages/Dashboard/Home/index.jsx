@@ -4,7 +4,7 @@ import { DashboardLayout } from '../../../layouts';
 import Container from './styles';
 import { AccountSummaryCard } from '../../../components/Dashboard';
 import { dummyData } from '../../../components/Dashboard/AccountSummaryCard';
-import { dummyTransactions, transactionColumns } from '../../../utils/tables';
+import { dummyTransactions, columns } from '../../../utils/tables';
 
 const Index = () => {
   const tab = localStorage.getItem('tab');
@@ -32,7 +32,8 @@ const Index = () => {
                 ? dummyTransactions.slice(-5)
                 : dummyTransactions
             }
-            columns={transactionColumns}
+            columns={columns}
+            pagination={false}
           />
         </Container>
       }

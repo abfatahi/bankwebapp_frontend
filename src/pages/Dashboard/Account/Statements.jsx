@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
 import Container from './styles';
-import { dummyTransactions, transactionColumns } from '../../../utils/tables';
+import { dummyTransactions, columns } from '../../../utils/tables';
 
 const Index = () => {
   return (
@@ -14,7 +14,7 @@ const Index = () => {
       <h3>Recent Transactions</h3>
       <br />
 
-      <Table dataSource={dummyTransactions} columns={transactionColumns} />
+      <Table dataSource={dummyTransactions} columns={columns} />
     </Container>
   );
 };

@@ -23,7 +23,7 @@ const Container = styled.div`
   // overflow-y: scroll !important;
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 1rem;
   }
