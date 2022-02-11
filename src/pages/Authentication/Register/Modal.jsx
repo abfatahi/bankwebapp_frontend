@@ -57,7 +57,6 @@ const ModalContainer = styled(Modal)`
       font-style: normal;
       font-weight: 600;
       font-size: 20px;
-      line-height: 170%;
       color: #000000;
       text-align: center;
       text-transform: capitalize;

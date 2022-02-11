@@ -11,8 +11,7 @@ const Navbar = () => {
   // const dispatch = useDispatch();
   const Navigate = useNavigate();
   const signout = () => {
-    sessionStorage.clear();
-    // dispatch(clearState());
+    localStorage.removeItem('token');
     Navigate('/login');
   };
 

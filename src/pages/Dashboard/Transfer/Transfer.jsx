@@ -46,6 +46,7 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setNewTransfer((prevState) => ({ ...prevState, submitted: true }));
+    // if()
   };
 
   const handleValidateAccount = (e) => {

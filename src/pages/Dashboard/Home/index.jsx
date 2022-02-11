@@ -5,12 +5,16 @@ import Container from './styles';
 import { AccountSummaryCard } from '../../../components/Dashboard';
 import { dummyData } from '../../../components/Dashboard/AccountSummaryCard';
 import { dummyTransactions, columns } from '../../../utils/tables';
-import { useDispatch } from 'react-redux';
-import { toggleShowBalance } from '../../../redux/reducers/account';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  toggleShowBalance,
+  accountSelector,
+} from '../../../redux/reducers/account';
 
 const Index = () => {
   const tab = localStorage.getItem('tab');
   const dispatch = useDispatch();
+  const { showBalance } = useSelector(accountSelector);
   return (
     <DashboardLayout
       content={
@@ -25,6 +29,7 @@ const Index = () => {
                 style={{ background: '#e24307' }}
                 onChange={() => dispatch(toggleShowBalance())}
               />
+              {showBalance ? <b>ON</b> : <b>OFF</b>}
             </div>
           </div>
           <AccountSummaryCard {...dummyData} />
