@@ -24,7 +24,7 @@ const Index = () => {
     amount: '',
     remark: '',
     submitted: false,
-    isValidAccountNumber: null,
+    isValidAccount: null,
   });
 
   const {
@@ -35,7 +35,7 @@ const Index = () => {
     amount,
     remark,
     submitted,
-    isValidAccountNumber,
+    isValidAccount,
   } = newTransfer;
 
   const handleChange = (e) => {
@@ -46,7 +46,27 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setNewTransfer((prevState) => ({ ...prevState, submitted: true }));
-    console.log(newTransfer);
+  };
+
+  const handleValidateAccount = (e) => {
+    e.preventDefault();
+    console.log(beneficiaryNumber.length);
+    if (beneficiaryNumber.length === 10) {
+      setNewTransfer((prevState) => ({
+        ...prevState,
+        isValidAccount: true,
+      }));
+      const payload = {
+        beneficiaryBankCode,
+        beneficiaryNumber,
+      };
+      dispatch(validateAccount(payload));
+    } else if (beneficiaryNumber.length < 10 || beneficiaryNumber.length > 10) {
+      setNewTransfer((prevState) => ({
+        ...prevState,
+        isValidAccount: false,
+      }));
+    }
   };
 
   return (
@@ -91,39 +111,22 @@ const Index = () => {
               />
               {!beneficiaryName && (
                 <Button
-                  onClick={() => {
-                    if (beneficiaryNumber.length === 10) {
-                      dispatch(
-                        validateAccount(beneficiaryBankCode, beneficiaryNumber)
-                      );
-                    } else {
-                      setNewTransfer((prevState) => ({
-                        ...prevState,
-                        isValidAccountNumber: false,
-                      }));
-                    }
-                  }}
+                  onClick={handleValidateAccount}
                   loading={validateBankLoading}
                   primary
                   text='Validate'
                 />
               )}
-              {submitted && !beneficiaryNumber && (
-                <>
-                  <br />
-                  <p className='error-msg'>
-                    Beneficiary account number is required
-                  </p>
-                </>
-              )}
-              {!isValidAccountNumber && (
-                <>
-                  <br />
-                  <p className='error-msg'>Invalid Account Number</p>
-                </>
-              )}
             </div>
           )}
+          {submitted && !beneficiaryNumber && (
+            <p className='error-msg'>Beneficiary account number is required</p>
+          )}
+          {isValidAccount === false &&
+            (beneficiaryNumber.length < 10 ||
+              beneficiaryNumber.length > 10) && (
+              <p className='error-msg'>Invalid Account Number</p>
+            )}
           {beneficiaryName && (
             <div className='input'>
               <Inputfield
