@@ -13,10 +13,7 @@ export const loginAccount = createAsyncThunk(
         });
 
       if (email === userEmail && password === userPassword) {
-        localStorage.setItem(
-          'token',
-          'sjkiuyeiyeiuyirhkyufeuiyferuyiueyuryfeoiyodkjfdhfuyeriureiu'
-        );
+        localStorage.setItem('token', +new Date());
         return true;
       }
     } catch (err) {

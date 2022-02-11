@@ -1,20 +1,13 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 
 const Index = ({ component: Component, ...rest }) => {
+  let isAuthorized = false;
   const token = localStorage.getItem('token');
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        return token ? (
-          <Component {...rest} {...props} />
-        ) : (
-          <Navigate to='/register' />
-        );
-      }}
-    />
-  );
+  if (token !== null || undefined || '') {
+    isAuthorized = true;
+  }
+  return isAuthorized ? <Outlet /> : <Navigate to='/register' />;
 };
 
 export default Index;

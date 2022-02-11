@@ -19,9 +19,15 @@ function App() {
         <Route path='/login' element={<LoginComponent />} />
         <Route path='/register' element={<RegisterComponent />} />
         {/* Dashboard Routes */}
-        <ProtectedRoute path='/' element={<Home />} />
-        <ProtectedRoute path='/account/*' element={<Account />} />
-        <ProtectedRoute path='/transfer/*' element={<Transfer />} />
+        <Route path='/' element={<ProtectedRoute />}>
+          <Route path='/' element={<Home />} />
+        </Route>
+        <Route path='/' element={<ProtectedRoute />}>
+          <Route path='/account/*' element={<Account />} />
+        </Route>
+        <Route path='/' element={<ProtectedRoute />}>
+          <Route path='/transfer/*' element={<Transfer />} />
+        </Route>
         {/* 404 Routes */}
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
