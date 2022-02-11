@@ -1,19 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { validateAccount } from '../../../redux/actions/transfer';
+import { validateAccount } from '../../../redux/actions/account';
 import { Button, Inputfield, Selectfield } from '../../../reusables';
 import { bankList } from '../../../utils/data';
 import Container, { TransferContainer } from './styles';
-import { transferSelector } from '../../../redux/reducers/transfer';
+import { transferSelector } from '../../../redux/reducers/account';
 
 const Index = () => {
   const dispatch = useDispatch();
 
   const {
     validateBankLoading,
-    // validateBankError,
-    // validateBankSuccess,
-    // accountName,
+    validateBankError,
+    validateBankSuccess,
+    accountName,
   } = useSelector(transferSelector);
 
   const [newTransfer, setNewTransfer] = React.useState({
@@ -69,6 +69,15 @@ const Index = () => {
     }
   };
 
+  React.useEffect(() => {
+    if (validateBankSuccess) {
+      setNewTransfer((prevState) => ({
+        ...prevState,
+        beneficiaryName: accountName,
+      }));
+    }
+  }, [setNewTransfer, validateBankSuccess, accountName]);
+
   return (
     <Container>
       <h1>Funds Transfer</h1>
@@ -119,6 +128,9 @@ const Index = () => {
               )}
             </div>
           )}
+          {validateBankError && (
+            <p className='error-msg'>Unable to validate account!</p>
+          )}
           {submitted && !beneficiaryNumber && (
             <p className='error-msg'>Beneficiary account number is required</p>
           )}
@@ -133,6 +145,7 @@ const Index = () => {
                 fieldname='beneficiaryName'
                 outline
                 value={beneficiaryName}
+                readOnly
                 onTextChange={handleChange}
               />
               {submitted && !beneficiaryName && (

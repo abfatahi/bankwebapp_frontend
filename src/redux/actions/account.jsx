@@ -10,10 +10,6 @@ export const validateAccount = createAsyncThunk(
         `${mayLancerURL}account_number=${beneficiaryNumber}&bank_code=${beneficiaryBankCode}`,
         {
           method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
         }
       );
       await new Promise((res) => setTimeout(res, 1000));

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { validateAccount } from '../actions/transfer';
+import { validateAccount } from '../actions/account';
 
 export const transferSlice = createSlice({
   name: 'transfer',

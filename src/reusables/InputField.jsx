@@ -83,6 +83,7 @@ const Index = ({
   placeholder,
   onTextChange,
   fieldname,
+  value,
   readOnly,
 }) => {
   const [togglePassword, setTogglePassword] = useState(false);
@@ -128,6 +129,7 @@ const Index = ({
             type={inputType}
             placeholder={placeholder}
             onChange={onTextChange}
+            value={value}
             readOnly={readOnly ? true : false}
           />
         )}

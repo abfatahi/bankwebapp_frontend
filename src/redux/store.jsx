@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { transferSlice } from './reducers/transfer';
+import { transferSlice } from './reducers/account';
 
 export default configureStore({
   reducer: {
