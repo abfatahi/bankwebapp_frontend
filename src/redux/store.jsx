@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { transferSlice } from './reducers/account';
+import { accountSlice } from './reducers/account';
+import { registerSlice } from './reducers/auth/register';
 
 export default configureStore({
   reducer: {
-    transfer: transferSlice.reducer,
+    account: accountSlice.reducer,
+    register: registerSlice.reducer,
   },
 });

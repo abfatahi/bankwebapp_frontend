@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { validateAccount } from '../actions/account';
 
-export const transferSlice = createSlice({
-  name: 'transfer',
+export const accountSlice = createSlice({
+  name: 'account',
   initialState: {
     validateBankLoading: false,
     validateBankError: false,
@@ -31,6 +31,6 @@ export const transferSlice = createSlice({
   },
 });
 
-// export const {  } = transferSlice.actions;
+// export const {  } = accountSlice.actions;
 
-export const transferSelector = (state) => state.transfer;
+export const accountSelector = (state) => state.account;

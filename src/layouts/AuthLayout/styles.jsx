@@ -23,7 +23,7 @@ export default styled.div`
     margin-top: 0.5em;
     font-size: ${rem('13px')};
     letter-spacing: ${rem('0.13px')};
-    color: #ff5e5e;
+    color: #e24307;
     opacity: 1;
   }
 

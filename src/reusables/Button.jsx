@@ -53,7 +53,6 @@ const Container = styled.button`
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
-  line-height: 16px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   cursor: pointer;

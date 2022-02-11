@@ -4,7 +4,7 @@ import { validateAccount } from '../../../redux/actions/account';
 import { Button, Inputfield, Selectfield } from '../../../reusables';
 import { bankList } from '../../../utils/data';
 import Container, { TransferContainer } from './styles';
-import { transferSelector } from '../../../redux/reducers/account';
+import { accountSelector } from '../../../redux/reducers/account';
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const Index = () => {
     validateBankError,
     validateBankSuccess,
     accountName,
-  } = useSelector(transferSelector);
+  } = useSelector(accountSelector);
 
   const [newTransfer, setNewTransfer] = React.useState({
     beneficiaryBank: '',
