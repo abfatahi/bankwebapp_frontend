@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { BsEye, BsEyeSlashFill } from 'react-icons/bs';
 
 const Container = styled.div`
-  width: 100%;
+  width: ${({ full }) => (full ? '100%' : '400px')};
   .group {
     display: flex;
     align-items: center;
@@ -23,8 +23,6 @@ const Container = styled.div`
     }
 
     input {
-      background: transparent;
-      border: 1px solid #fff;
       padding: 0 3.5em 0 1em;
       height: 100%;
       border-radius: 3px;
@@ -32,8 +30,28 @@ const Container = styled.div`
       font-weight: 500;
       font-size: 1em;
       letter-spacing: 0.018em;
-      color: #fff;
       width: 100%;
+
+      ${(props) => css`
+        ${props.primary &&
+        css`
+          border: 1px solid #fff;
+          background: transparent;
+          color: #fff;
+        `}
+
+        ${props.outline &&
+        css`
+          border: 1px solid #e5e5e5 !important;
+          background: transparent;
+          color: #000;
+
+          :focus {
+            outline: none;
+            border: 1px solid #bdbdbd !important;
+          }
+        `}
+      `}
 
       :focus {
         outline: none;
@@ -57,10 +75,22 @@ const Container = styled.div`
     }
   }
 `;
-const Index = ({ inputType, placeholder, onTextChange, fieldname }) => {
+const Index = ({
+  full,
+  primary,
+  outline,
+  inputType,
+  placeholder,
+  onTextChange,
+  fieldname,
+}) => {
   const [togglePassword, setTogglePassword] = useState(false);
   return (
-    <Container>
+    <Container
+      full={full}
+      primary={primary}
+      outline={outline ? outline : undefined}
+    >
       <div className='group'>
         {inputType === 'password' ? (
           togglePassword ? (

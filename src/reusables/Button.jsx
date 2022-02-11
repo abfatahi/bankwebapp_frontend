@@ -1,7 +1,7 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import { Spin } from "antd";
-import { Loading3QuartersOutlined } from "@ant-design/icons";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { Spin } from 'antd';
+import { Loading3QuartersOutlined } from '@ant-design/icons';
 
 const Button = ({
   text,
@@ -13,16 +13,18 @@ const Button = ({
   info,
   outline,
   light,
-  type = "submit",
+  dark,
+  type = 'submit',
   disabled = false,
 }) => {
   const antIcon = (
-    <Loading3QuartersOutlined style={{ fontSize: 24, color: "#fff" }} spin />
+    <Loading3QuartersOutlined style={{ fontSize: 24, color: '#fff' }} spin />
   );
   return (
     <Container
-      type={type ? type : ""}
+      type={type ? type : ''}
       full={full ? full : undefined}
+      dark={dark ? dark : undefined}
       primary={primary}
       info={info ? info : undefined}
       secondary={secondary ? secondary : undefined}
@@ -39,7 +41,7 @@ const Button = ({
 export default Button;
 
 const Container = styled.button`
-  width: ${({ full }) => (full ? "100%" : "50%")};
+  width: ${({ full }) => (full ? '100%' : '50%')};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   height: 2.8rem;
   display: flex;
@@ -79,6 +81,11 @@ const Container = styled.button`
       background: #455afe;
       color: #ffffff;
     `}
+    ${props.dark &&
+    css`
+      background: #000;
+      color: #ffffff;
+    `}
     ${props.outline &&
     css`
       border: 1px solid #455afe !important;
@@ -86,7 +93,7 @@ const Container = styled.button`
       color: #455afe;
 
       :hover {
-        color:#fff;
+        color: #fff;
         border: none !important;
         background: #455afe !important;
       }
