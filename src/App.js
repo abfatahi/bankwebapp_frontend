@@ -18,6 +18,7 @@ function App() {
         {/* Authentication */}
         <Route path='/login' element={<LoginComponent />} />
         <Route path='/register' element={<RegisterComponent />} />
+
         {/* Dashboard Routes */}
         <Route path='/' element={<ProtectedRoute />}>
           <Route path='/' element={<Home />} />
@@ -28,6 +29,7 @@ function App() {
         <Route path='/' element={<ProtectedRoute />}>
           <Route path='/transfer/*' element={<Transfer />} />
         </Route>
+        
         {/* 404 Routes */}
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>

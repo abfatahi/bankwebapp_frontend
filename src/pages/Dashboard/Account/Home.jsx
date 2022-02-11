@@ -11,14 +11,14 @@ const Index = () => {
       <p>Manage your accounts, view balance and do more</p>
       <CardWrapper>
         <AccountTab
-          text='Account Statement'
-          icon={<FaWallet className='icon' />}
-          link='/account/statement'
-        />
-        <AccountTab
           text='Transaction History'
           icon={<FaHistory className='icon' />}
           link='/account/transaction-history'
+        />
+        <AccountTab
+          text='Account Statement'
+          icon={<FaWallet className='icon' />}
+          link='/account/statement'
         />
       </CardWrapper>
     </Container>

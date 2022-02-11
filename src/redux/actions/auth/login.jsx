@@ -14,6 +14,7 @@ export const loginAccount = createAsyncThunk(
 
       if (email === userEmail && password === userPassword) {
         localStorage.setItem('token', +new Date());
+        localStorage.setItem('tab', 'Dashboard');
         return true;
       }
     } catch (err) {

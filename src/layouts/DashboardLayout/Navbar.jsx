@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { Logo as logo } from '../../assets/images';
 
 const Navbar = () => {
-  // const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+  const loggedInUser = JSON.parse(localStorage.getItem('user'));
   // const dispatch = useDispatch();
   const Navigate = useNavigate();
   const signout = () => {
@@ -28,10 +28,8 @@ const Navbar = () => {
         <NotificationIcon />
         <Avatar />
         <UserProfile>
-          <p>Ishaq Abdulfatahi</p>
-          <span>0154305609</span>
-          {/* <p>{loggedInUser.firstName + ' ' + loggedInUser.lastName}</p>
-          <span>{loggedInUser.isSuper ? 'Super Admin' : 'Sub Admin'}</span> */}
+          <p>{loggedInUser.fullname}</p>
+          <span>0089728686</span>
         </UserProfile>
         <Logo src={logo} />
       </NavMenu>
@@ -43,8 +41,8 @@ export default Navbar;
 
 const Container = styled.div`
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   height: 64px;
   width: 100vw;
   background: #ffffff;
@@ -134,7 +132,7 @@ const Avatar = styled(FaUser)`
   width: 2.5rem;
   height: 2.5rem;
   color: #e24307;
-  border-radius:50%;
+  border-radius: 50%;
   padding: 1px;
 `;
 

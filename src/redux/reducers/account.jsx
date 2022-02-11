@@ -8,8 +8,14 @@ export const accountSlice = createSlice({
     validateBankError: false,
     validateBankSuccess: false,
     accountName: '',
+    showBalance: false,
   },
-  reducers: {},
+  reducers: {
+    toggleShowBalance: (state) => {
+      state.showBalance = !state.showBalance;
+      return state;
+    },
+  },
   extraReducers: {
     [validateAccount.pending]: (state) => {
       state.validateBankLoading = true;
@@ -31,6 +37,6 @@ export const accountSlice = createSlice({
   },
 });
 
-// export const {  } = accountSlice.actions;
+export const { toggleShowBalance } = accountSlice.actions;
 
 export const accountSelector = (state) => state.account;

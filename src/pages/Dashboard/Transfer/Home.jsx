@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaExchangeAlt} from 'react-icons/fa';
+import { FaExchangeAlt } from 'react-icons/fa';
 import { AccountTab } from '../../../components/Account';
 import Container, { CardWrapper } from './styles';
 

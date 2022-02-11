@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const [activeTab, setActiveTab] = React.useState('Dashboard');
-
+  const loggedInUser = JSON.parse(localStorage.getItem('user'));
   React.useEffect(() => {
     const tab = localStorage.getItem('tab');
     setActiveTab(tab);
@@ -22,8 +22,8 @@ const Sidebar = () => {
       <div className='user_info'>
         <FaUserAlt className='avatar' />
         <div className='group'>
-          <h2>Ishaq Abdulfatahi</h2>
-          <h3>0154305609</h3>
+          <h2>{loggedInUser.fullname}</h2>
+          <h3>0089728686</h3>
         </div>
       </div>
 

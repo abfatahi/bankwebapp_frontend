@@ -1,3 +1,3 @@
 export const baseURL = `https://api.paystack.co/`;
 export const paystackTestSecretKey =
-  'sk_test_7ec7f91aa1ef34f64f8e182b0c9f8427b995e051';
+  'sk_test_824a649c35f1ae8886b4117eba2bbb11284014bf';

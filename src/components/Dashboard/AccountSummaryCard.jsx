@@ -1,16 +1,24 @@
 import React from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { accountSelector } from '../../redux/reducers/account';
+
+const loggedInUser = JSON.parse(localStorage.getItem('user'));
 
 const Index = (props) => {
+  const { showBalance } = useSelector(accountSelector);
   return (
     <Container>
       <div className='first__row'>
         <div className='balance__group'>
           <div className='available__balance'>
-            # {props.availableBalance.toLocaleString()}
+            # {showBalance ? props.availableBalance.toLocaleString() : 'XXXXXX'}
           </div>
-          <p>Book Balance: #{props.bookBalance.toLocaleString()}</p>
+          <p>
+            Book Balance: #
+            {showBalance ? props.bookBalance.toLocaleString() : 'XXXXXX'}
+          </p>
         </div>
         <FaCheckCircle className='icon' />
       </div>
@@ -25,8 +33,8 @@ const Index = (props) => {
 export const dummyData = {
   availableBalance: 450000,
   bookBalance: 500000,
-  accountNumber: '0154305609',
-  accountName: 'Ishaq Abdulfatahi',
+  accountNumber: '0089728686',
+  accountName: loggedInUser.fullname,
 };
 
 export default Index;
