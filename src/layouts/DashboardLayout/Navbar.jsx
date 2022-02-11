@@ -132,7 +132,7 @@ const NotificationIcon = styled(FaBell)`
 const Avatar = styled(FaUser)`
   margin-right: 0.5rem;
   width: 2.5rem;
-  height: 70%;
+  height: 2.5rem;
   color: #e24307;
   border-radius:50%;
   padding: 1px;

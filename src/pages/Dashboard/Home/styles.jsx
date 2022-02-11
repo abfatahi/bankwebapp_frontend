@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 export default styled.div`
   width: 100%;
-  //   height: 100%;
-  overflow-y: hidden !important;
 
   p {
     margin-bottom: 2rem !important;
@@ -30,7 +28,4 @@ export default styled.div`
     }
   }
 
-  .table__wrapper {
-    width: 100%;
-  }
 `;

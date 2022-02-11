@@ -26,16 +26,14 @@ const Index = () => {
           <br />
           <h3>Recent Transactions</h3>
           <br />
-          <div className='table__wrapper'>
-            <Table
-              dataSource={
-                dummyTransactions.length > 0
-                  ? dummyTransactions.slice(-5)
-                  : dummyTransactions
-              }
-              columns={transactionColumns}
-            />
-          </div>
+          <Table
+            dataSource={
+              dummyTransactions.length > 0
+                ? dummyTransactions.slice(-5)
+                : dummyTransactions
+            }
+            columns={transactionColumns}
+          />
         </Container>
       }
     />

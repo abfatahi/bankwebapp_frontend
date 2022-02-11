@@ -13,6 +13,7 @@ const Index = () => {
       </p>
       <h3>Recent Transactions</h3>
       <br />
+
       <Table dataSource={dummyTransactions} columns={transactionColumns} />
     </Container>
   );
