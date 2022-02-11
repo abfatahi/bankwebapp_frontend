@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export default styled.div`
   width: 100%;
-  height: 100%;
-  overflow-x: hidden !important;
-  
+  //   height: 100%;
+  overflow-y: hidden !important;
+
   p {
     margin-bottom: 2rem !important;
   }
@@ -28,5 +28,9 @@ export default styled.div`
         color: grey;
       }
     }
+  }
+
+  .table__wrapper {
+    width: 100%;
   }
 `;

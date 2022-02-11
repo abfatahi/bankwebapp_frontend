@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  FaUser,
-  FaBell,
-  FaChevronCircleLeft,
-} from 'react-icons/fa';
+import { FaUser, FaBell, FaChevronCircleLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 // import { clearState } from '../../redux/reducers/auth/login';
 // import { useDispatch } from 'react-redux';
@@ -32,8 +28,8 @@ const Navbar = () => {
         <NotificationIcon />
         <Avatar />
         <UserProfile>
-          <p>Nicola Tesla</p>
-          <span>0143506867</span>
+          <p>Ishaq Abdulfatahi</p>
+          <span>0154305609</span>
           {/* <p>{loggedInUser.firstName + ' ' + loggedInUser.lastName}</p>
           <span>{loggedInUser.isSuper ? 'Super Admin' : 'Sub Admin'}</span> */}
         </UserProfile>
@@ -47,6 +43,8 @@ export default Navbar;
 
 const Container = styled.div`
   position: fixed;
+  top:0;
+  left:0;
   height: 64px;
   width: 100vw;
   background: #ffffff;
@@ -95,25 +93,26 @@ const UserProfile = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
 
   p {
     font-style: normal;
     font-weight: bold;
     font-size: 1rem;
-    line-height: 16px;
     text-align: center;
     letter-spacing: 0.001em;
     color: #666666;
-    margin-bottom: 0.4em !important;
+    margin-bottom: 0.2em !important;
   }
   span {
     font-style: normal;
     font-weight: normal;
     font-size: 0.9rem;
-    line-height: 12px;
     text-align: center;
     letter-spacing: 0.015em;
     color: #e24307;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 `;
 
@@ -132,9 +131,11 @@ const NotificationIcon = styled(FaBell)`
 
 const Avatar = styled(FaUser)`
   margin-right: 0.5rem;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 70%;
   color: #e24307;
+  border-radius:50%;
+  padding: 1px;
 `;
 
 const Logout = styled(FaChevronCircleLeft)`
@@ -142,8 +143,9 @@ const Logout = styled(FaChevronCircleLeft)`
   width: 1.5rem;
   height: 1.5rem;
   color: #e24307;
+
   :hover {
-    transform: scale(1.1);
+    opacity: 0.7;
     transition: 0.2s all ease-in-out;
   }
 `;
