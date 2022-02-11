@@ -5,7 +5,10 @@ export const registerAccount = createAsyncThunk(
   async ({ fullname, email, password }, thunkAPI) => {
     try {
       await new Promise((res) => setTimeout(res, 3000));
-      localStorage.setItem('dbStore', [{ fullname, email, password }]);
+      localStorage.setItem(
+        'dbStore',
+        JSON.stringify({ fullname, email, password })
+      );
       return true;
     } catch (err) {
       return thunkAPI.rejectWithValue([

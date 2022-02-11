@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { registerSelector } from '../../../redux/reducers/auth/register';
 import { registerAccount } from '../../../redux/actions/auth/register';
 import { isEmail } from '../../../utils/utilities';
+import { RegisterSuccessModal } from './Modal';
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -14,13 +15,13 @@ const Index = () => {
     Aos.init();
   }, []);
 
-  const { success, error, loading } = useSelector(registerSelector);
+  const { error, loading } = useSelector(registerSelector);
 
   const [user, setUser] = React.useState({
-    fullname: '',
-    email: '',
-    password: '',
-    confirmPass: '',
+    fullname: 'Ishaq Abdulfatahi',
+    email: 'abfatahi.iaf@gmail.com',
+    password: 'Forloop70!',
+    confirmPass: 'Forloop70!',
     submitted: false,
   });
 
@@ -49,6 +50,7 @@ const Index = () => {
       }
       content={
         <>
+          <RegisterSuccessModal />
           <form
             onSubmit={handleSubmit}
             data-aos='fade-left'
@@ -116,6 +118,7 @@ const Index = () => {
                 )}
               </div>
             </div>
+            {error && <p className='error-msg'>Something went wrong!</p>}
             <Button loading={loading} full primary text='Register' />
           </form>
         </>

@@ -18,7 +18,7 @@ const Button = ({
   disabled = false,
 }) => {
   const antIcon = (
-    <Loading3QuartersOutlined style={{ fontSize: 24, color: '#fff' }} spin />
+    <Loading3QuartersOutlined style={{ fontSize: 16, color: '#fff' }} spin />
   );
   return (
     <Container

@@ -8,7 +8,14 @@ export const registerSlice = createSlice({
     error: false,
     success: false,
   },
-  reducers: {},
+  reducers: {
+    clearState: (state) => {
+      state.loading = false;
+      state.error = false;
+      state.success = false;
+      return state;
+    },
+  },
   extraReducers: {
     [registerAccount.pending]: (state) => {
       state.loading = true;
@@ -29,6 +36,6 @@ export const registerSlice = createSlice({
   },
 });
 
-// export const {  } = registerSlice.actions;
+export const { clearState } = registerSlice.actions;
 
 export const registerSelector = (state) => state.register;
