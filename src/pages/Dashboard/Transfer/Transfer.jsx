@@ -9,14 +9,13 @@ const Index = () => {
       <p>Send money to anyone. it's Quick and Easy</p>
       <TransferContainer>
         <h3>Daily Transfer limit: #10,000,0000</h3>
-        <div className='group'>
           <p>
             Min Transaction Amount: <b>#100</b>{' '}
           </p>
           <p>
             Min Transaction Amount: <b>#10,000,000</b>
           </p>
-        </div>
+          <br />
         <div className='input__group'>
           <Selectfield
             placeholder="Select Beneficiary's Bank"

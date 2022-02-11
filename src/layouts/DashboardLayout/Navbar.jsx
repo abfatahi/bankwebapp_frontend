@@ -65,7 +65,7 @@ const Container = styled.div`
 
   h4 {
     font-weight: normal;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 19px;
     text-align: center;
     letter-spacing: 0.05em;

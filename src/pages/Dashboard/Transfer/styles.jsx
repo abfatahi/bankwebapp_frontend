@@ -18,7 +18,7 @@ export const CardWrapper = styled.div`
 `;
 
 export const TransferContainer = styled.form`
-  width: 60%;
+  width: 40%;
   background: #fff;
   border-radius: 10px;
   padding: 2rem 3rem;
@@ -30,13 +30,14 @@ export const TransferContainer = styled.form`
     font-weight: bold;
   }
 
-  .group {
-    display: flex;
-    gap: 1.5rem;
+  p {
+    font-size:0.8em;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .input__group {
-    width:400px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
