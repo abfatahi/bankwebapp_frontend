@@ -1,9 +1,31 @@
 import React from 'react';
+// import { useSelector } from 'react-redux';
 import { Button, Inputfield, Selectfield } from '../../../reusables';
 import Container, { TransferContainer } from './styles';
+// import { transferSelector } from '../../../redux/actions/transfer';
 
 const Index = () => {
-  const [isSelectBank, setIsSelectBank] = React.useState(false);
+  const [newTransfer, setNewTransfer] = React.useState({
+    beneficaryBank: '',
+    beneficiaryName: '',
+    beneficiaryNumber: 0,
+    amount: 0,
+    remark: '',
+  });
+
+  const {
+    beneficiaryBank,
+    beneficiaryName,
+    beneficiaryNumber,
+    amount,
+    remark,
+  } = newTransfer;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewTransfer((prevState) => ({ ...prevState, [name]: value }));
+  };
+
   return (
     <Container>
       <h1>Funds Transfer</h1>
@@ -19,7 +41,12 @@ const Index = () => {
         <br />
         <div className='input__group'>
           <Selectfield
-            onValueChange={(e) => setIsSelectBank(true)}
+            onValueChange={(e) =>
+              setNewTransfer((prevState) => ({
+                ...prevState,
+                beneficiaryBank: e.target.value,
+              }))
+            }
             placeholder="Select Beneficiary's Bank"
             data={[
               { key: 1, value: 'First Bank' },
@@ -27,17 +54,38 @@ const Index = () => {
               { key: 3, value: 'Guaranty Trust Bank' },
             ]}
           />
-          {isSelectBank ? (
-            <Inputfield outline placeholder='Enter Account Number' />
-          ) : (
-            ''
+          {beneficiaryBank && (
+            <Inputfield
+              fieldname='beneficiaryNumber'
+              outline
+              value={beneficiaryNumber}
+              placeholder='Enter Account Number'
+              onTextChange={handleChange}
+            />
           )}
-
+          {beneficiaryName && (
+            <Inputfield
+              fieldname='beneficiaryName'
+              outline
+              value={beneficiaryName}
+              placeholder='Enter Account Number'
+              onTextChange={handleChange}
+            />
+          )}
           <Inputfield
+            fieldname='amount'
             outline
+            value={amount}
             placeholder='Enter Amount between 100 - 10,000,000'
+            onTextChange={handleChange}
           />
-          <Inputfield outline placeholder='Remark (Optional)' />
+          <Inputfield
+            fieldname='remark'
+            outline
+            value={remark}
+            placeholder='Remark (Optional)'
+            onTextChange={handleChange}
+          />
           <br />
           <Button full dark text='Continue' />
         </div>
