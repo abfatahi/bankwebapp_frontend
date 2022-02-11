@@ -6,7 +6,7 @@ export const registerAccount = createAsyncThunk(
     try {
       await new Promise((res) => setTimeout(res, 3000));
       localStorage.setItem(
-        'dbStore',
+        'user',
         JSON.stringify({ fullname, email, password })
       );
       return true;

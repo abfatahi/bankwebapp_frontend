@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerAccount } from '../../actions/auth/register';
+import { loginAccount } from '../../actions/auth/login';
 
-export const registerSlice = createSlice({
-  name: 'register',
+export const loginSlice = createSlice({
+  name: 'login',
   initialState: {
     loading: false,
     error: false,
@@ -17,17 +17,17 @@ export const registerSlice = createSlice({
     },
   },
   extraReducers: {
-    [registerAccount.pending]: (state) => {
+    [loginAccount.pending]: (state) => {
       state.loading = true;
       return state;
     },
-    [registerAccount.fulfilled]: (state) => {
+    [loginAccount.fulfilled]: (state) => {
       state.loading = false;
       state.error = false;
       state.success = true;
       return state;
     },
-    [registerAccount.rejected]: (state) => {
+    [loginAccount.rejected]: (state) => {
       state.loading = false;
       state.error = true;
       state.success = false;
@@ -36,6 +36,6 @@ export const registerSlice = createSlice({
   },
 });
 
-export const { clearState } = registerSlice.actions;
+export const { clearState } = loginSlice.actions;
 
-export const registerSelector = (state) => state.register;
+export const loginSelector = (state) => state.login;
