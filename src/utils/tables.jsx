@@ -1,5 +1,4 @@
 import { Space } from 'antd';
-import { FaEllipsisH as Menu } from 'react-icons/fa';
 
 export const columns = [
   {
@@ -10,6 +9,7 @@ export const columns = [
     title: 'Description',
     dataIndex: 'description',
     key: 'description',
+    width:'700px',
     render: (text) => <Space>{text}</Space>,
   },
   {
@@ -71,6 +71,7 @@ export const transactionColumns = [
     title: 'Description',
     dataIndex: 'description',
     key: 'description',
+    width:'700px',
     render: (text) => <Space>{text}</Space>,
   },
   {
@@ -123,7 +124,7 @@ export const transactionColumns = [
     ),
   },
   {
-    title: 'Action',
+    title: '...',
     render: () => (
       <Space
         style={{

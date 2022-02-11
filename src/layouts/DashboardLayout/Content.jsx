@@ -1,4 +1,5 @@
 import React from 'react';
+import { rem } from 'polished';
 import styled from 'styled-components';
 import { FaChevronCircleLeft } from 'react-icons/fa';
 
@@ -26,6 +27,29 @@ const Container = styled.div`
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 1rem;
+  }
+
+  p.error-msg {
+    text-align: left !important;
+    margin: 0px;
+    padding: 0;
+    margin-top: 0.5em;
+    font-size: ${rem('13px')};
+    letter-spacing: ${rem('0.13px')};
+    color: #ff5e5e;
+    opacity: 1;
+  }
+
+  p.success {
+    text-align: left !important;
+    margin: 0px;
+    padding: 0;
+    margin-top: 0.5em;
+    font-size: ${rem('13px')};
+    font-weight: bold;
+    letter-spacing: ${rem('0.13px')};
+    color: green;
+    opacity: 1;
   }
 `;
 

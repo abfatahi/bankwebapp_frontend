@@ -1,24 +1,41 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { validateAccount } from '../../../redux/actions/transfer';
 import { Button, Inputfield, Selectfield } from '../../../reusables';
+import { bankList } from '../../../utils/data';
 import Container, { TransferContainer } from './styles';
-// import { transferSelector } from '../../../redux/actions/transfer';
+import { transferSelector } from '../../../redux/reducers/transfer';
 
 const Index = () => {
+  const dispatch = useDispatch();
+
+  const {
+    validateBankLoading,
+    // validateBankError,
+    // validateBankSuccess,
+    // accountName,
+  } = useSelector(transferSelector);
+
   const [newTransfer, setNewTransfer] = React.useState({
-    beneficaryBank: '',
+    beneficiaryBank: '',
+    beneficiaryBankCode: '',
     beneficiaryName: '',
-    beneficiaryNumber: 0,
-    amount: 0,
+    beneficiaryNumber: '',
+    amount: '',
     remark: '',
+    submitted: false,
+    isValidAccountNumber: null,
   });
 
   const {
     beneficiaryBank,
+    beneficiaryBankCode,
     beneficiaryName,
     beneficiaryNumber,
     amount,
     remark,
+    submitted,
+    isValidAccountNumber,
   } = newTransfer;
 
   const handleChange = (e) => {
@@ -26,11 +43,17 @@ const Index = () => {
     setNewTransfer((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setNewTransfer((prevState) => ({ ...prevState, submitted: true }));
+    console.log(newTransfer);
+  };
+
   return (
     <Container>
       <h1>Funds Transfer</h1>
       <p>Send money to anyone. it's Quick and Easy</p>
-      <TransferContainer>
+      <TransferContainer onSubmit={handleSubmit}>
         <h3>Daily Transfer limit: #10,000,0000</h3>
         <p>
           Min Transaction Amount: <b>#100</b>{' '}
@@ -40,54 +63,122 @@ const Index = () => {
         </p>
         <br />
         <div className='input__group'>
-          <Selectfield
-            onValueChange={(e) =>
-              setNewTransfer((prevState) => ({
-                ...prevState,
-                beneficiaryBank: e.target.value,
-              }))
-            }
-            placeholder="Select Beneficiary's Bank"
-            data={[
-              { key: 1, value: 'First Bank' },
-              { key: 2, value: 'Zenith Bank' },
-              { key: 3, value: 'Guaranty Trust Bank' },
-            ]}
-          />
-          {beneficiaryBank && (
-            <Inputfield
-              fieldname='beneficiaryNumber'
-              outline
-              value={beneficiaryNumber}
-              placeholder='Enter Account Number'
-              onTextChange={handleChange}
+          <div className='input'>
+            <Selectfield
+              onValueChange={(e) =>
+                setNewTransfer((prevState) => ({
+                  ...prevState,
+                  beneficiaryBankCode: e.target.value,
+                  beneficiaryBank: e.target.name,
+                }))
+              }
+              placeholder="Select Beneficiary's Bank"
+              data={bankList}
             />
+            {submitted && !beneficiaryBank && (
+              <p className='error-msg'>Beneficiary bank is required</p>
+            )}
+          </div>
+          {beneficiaryBankCode && (
+            <div className='group'>
+              <Inputfield
+                fieldname='beneficiaryNumber'
+                inputType='number'
+                outline
+                value={beneficiaryNumber}
+                placeholder='Enter Account Number'
+                onTextChange={handleChange}
+              />
+              {!beneficiaryName && (
+                <Button
+                  onClick={() => {
+                    if (beneficiaryNumber.length === 10) {
+                      dispatch(
+                        validateAccount(beneficiaryBankCode, beneficiaryNumber)
+                      );
+                    } else {
+                      setNewTransfer((prevState) => ({
+                        ...prevState,
+                        isValidAccountNumber: false,
+                      }));
+                    }
+                  }}
+                  loading={validateBankLoading}
+                  primary
+                  text='Validate'
+                />
+              )}
+              {submitted && !beneficiaryNumber && (
+                <>
+                  <br />
+                  <p className='error-msg'>
+                    Beneficiary account number is required
+                  </p>
+                </>
+              )}
+              {!isValidAccountNumber && (
+                <>
+                  <br />
+                  <p className='error-msg'>Invalid Account Number</p>
+                </>
+              )}
+            </div>
           )}
           {beneficiaryName && (
+            <div className='input'>
+              <Inputfield
+                fieldname='beneficiaryName'
+                outline
+                value={beneficiaryName}
+                onTextChange={handleChange}
+              />
+              {submitted && !beneficiaryName && (
+                <p className='error-msg'>Beneficiary name is required</p>
+              )}
+            </div>
+          )}
+          {beneficiaryBankCode && !beneficiaryName && (
+            <p>
+              <b> Validate Account Number to Proceed</b>
+            </p>
+          )}
+          <div className='input'>
             <Inputfield
-              fieldname='beneficiaryName'
+              fieldname='amount'
               outline
-              value={beneficiaryName}
-              placeholder='Enter Account Number'
+              inputType='number'
+              value={amount}
+              placeholder='Enter Amount between 100 - 10,000,000'
+              readOnly={!beneficiaryName ? true : false}
               onTextChange={handleChange}
             />
-          )}
-          <Inputfield
-            fieldname='amount'
-            outline
-            value={amount}
-            placeholder='Enter Amount between 100 - 10,000,000'
-            onTextChange={handleChange}
-          />
-          <Inputfield
-            fieldname='remark'
-            outline
-            value={remark}
-            placeholder='Remark (Optional)'
-            onTextChange={handleChange}
-          />
+            {submitted && !amount && (
+              <p className='error-msg'>Transfer amount is required</p>
+            )}
+            {submitted && amount && parseInt(amount) > 10000000 && (
+              <p className='error-msg'>Maximum transfer amount is #1000000</p>
+            )}
+            {submitted && amount && parseInt(amount) < 100 && (
+              <p className='error-msg'>Minimum transfer amount is #100</p>
+            )}
+          </div>
+          <div className='input'>
+            <Inputfield
+              fieldname='remark'
+              outline
+              value={remark}
+              readOnly={!beneficiaryName ? true : false}
+              placeholder='Remark (Optional)'
+              onTextChange={handleChange}
+            />
+          </div>
           <br />
-          <Button full dark text='Continue' />
+          <Button
+            disabled={!beneficiaryName ? true : false}
+            full
+            dark
+            text='Continue'
+          />
         </div>
       </TransferContainer>
     </Container>

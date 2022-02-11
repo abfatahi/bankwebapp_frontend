@@ -33,7 +33,10 @@ export const TransferContainer = styled.form`
     margin: 0 !important;
     padding: 0 !important;
   }
-
+.group{
+  display:flex;
+  gap: 1rem;
+}
   .input__group {
     width: 400px;
     display: flex;

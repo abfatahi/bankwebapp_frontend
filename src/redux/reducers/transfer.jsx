@@ -1,16 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { validateAccount } from '../actions/transfer';
 
 export const transferSlice = createSlice({
   name: 'transfer',
-  initialState: {},
-  reducers: {
-    // toggletransfer: (state) => {
-    //   state.transferActive = !state.transferActive;
-    //   return state;
-    // },
+  initialState: {
+    validateBankLoading: false,
+    validateBankError: false,
+    validateBankSuccess: false,
+    accountName: '',
+  },
+  reducers: {},
+  extraReducers: {
+    [validateAccount.pending]: (state) => {
+      state.validateBankLoading = true;
+      return state;
+    },
+    [validateAccount.fulfilled]: (state, { payload }) => {
+      state.validateBankLoading = false;
+      state.validateBankError = false;
+      state.validateBankSuccess = true;
+      state.accountName = payload.account_name;
+      return state;
+    },
+    [validateAccount.rejected]: (state) => {
+      state.validateBankLoading = false;
+      state.validateBankError = true;
+      state.validateBankSuccess = false;
+      return state;
+    },
   },
 });
 
-export const { toggletransfer } = transferSlice.actions;
+// export const {  } = transferSlice.actions;
 
 export const transferSelector = (state) => state.transfer;
