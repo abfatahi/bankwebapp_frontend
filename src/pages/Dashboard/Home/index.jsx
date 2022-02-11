@@ -26,7 +26,14 @@ const Index = () => {
           <br />
           <h3>Recent Transactions</h3>
           <br />
-          <Table dataSource={dummyTransactions} columns={transactionColumns} />
+          <Table
+            dataSource={
+              dummyTransactions.length > 0
+                ? dummyTransactions.slice(-5)
+                : dummyTransactions
+            }
+            columns={transactionColumns}
+          />
         </Container>
       }
     />

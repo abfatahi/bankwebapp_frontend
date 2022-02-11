@@ -31,4 +31,16 @@ const Container = styled.div`
     color: #000;
     background: transparent;
   }
+
+  :hover {
+    background: #e24307;
+
+    p {
+      color: #fff;
+    }
+
+    .icon {
+      color: #fff;
+    }
+  }
 `;
