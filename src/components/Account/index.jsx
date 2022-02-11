@@ -1,1 +1,1 @@
-export { default as AccountCard } from './AccountTab';
+export { default as AccountTab } from './AccountTab';

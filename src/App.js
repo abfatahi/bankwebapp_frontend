@@ -19,7 +19,7 @@ function App() {
         <Route path='/register' element={<RegisterComponent />} />
         {/* Dashboard Routes */}
         <Route path='/' element={<Home />} />
-        <Route path='/account' element={<Account />} />
+        <Route path='/account/*' element={<Account />} />
         <Route path='/transfer' element={<Transfer />} />
         {/* 404 Routes */}
         <Route path='*' element={<Navigate to='/' />} />

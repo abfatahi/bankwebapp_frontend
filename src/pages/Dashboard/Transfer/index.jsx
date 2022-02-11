@@ -7,10 +7,12 @@ import { dummyData } from '../../../components/Dashboard/AccountSummaryCard';
 import { dummyTransactions, transactionColumns } from '../../../utils/tables';
 
 const Index = () => {
+  const tab = localStorage.getItem('tab');
   return (
     <DashboardLayout
       content={
         <Container>
+          <h1>{tab}</h1>
           <p>Quickly perform task from the dashboard or view reprots</p>
           <div className='header'>
             <h3>ACCOUNT SUMMARY</h3>

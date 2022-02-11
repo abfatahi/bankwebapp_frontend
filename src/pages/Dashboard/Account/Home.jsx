@@ -1,0 +1,27 @@
+import React from 'react';
+import { FaWallet, FaHistory } from 'react-icons/fa';
+import { AccountTab } from '../../../components/Account';
+import Container, { CardWrapper } from './styles';
+
+const Index = () => {
+  const tab = localStorage.getItem('tab');
+  return (
+    <Container>
+      <h1>{tab}</h1>
+      <p>Manage your accounts, view balance and do more</p>
+      <CardWrapper>
+        <AccountTab
+          text='Account Statement'
+          icon={<FaWallet className='icon' />}
+          link='/account/statement'
+        />
+        <AccountTab
+          text='Transaction History'
+          icon={<FaHistory className='icon' />}
+          link='/account/transaction-history'
+        />
+      </CardWrapper>
+    </Container>
+  );
+};
+export default Index;

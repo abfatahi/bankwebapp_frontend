@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import { FaChevronCircleLeft } from 'react-icons/fa';
 
 const Content = (props) => {
-  const tab = localStorage.getItem('tab');
   return (
     <Container>
-      <h1>{tab}</h1>
       {props.content}
     </Container>
   );
