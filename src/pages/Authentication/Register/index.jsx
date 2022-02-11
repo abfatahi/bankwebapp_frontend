@@ -19,14 +19,29 @@ const Index = () => {
       content={
         <>
           <form action='' data-aos='fade-left' data-aos-duration='1000'>
-            <Inputfield placeholder='Fullname' />
-            <Inputfield placeholder='Email' />
-            <Inputfield placeholder='Phone Number' />
+            <Inputfield primary full placeholder='Fullname' />
+            <Inputfield primary full placeholder='Email' />
+            <Inputfield primary full placeholder='Phone Number' />
             <div className='group'>
-              <Inputfield placeholder='Password' inputType='password' />
-              <Inputfield placeholder='Confirm Password' inputType='password' />
+              <Inputfield
+                primary
+                full
+                placeholder='Password'
+                inputType='password'
+              />
+              <Inputfield
+                primary
+                full
+                placeholder='Confirm Password'
+                inputType='password'
+              />
             </div>
-            <Inputfield placeholder='Transfer Pin' inputType='password' />
+            <Inputfield
+              primary
+              full
+              placeholder='Transfer Pin'
+              inputType='password'
+            />
             <Button full primary text='Register' />
           </form>
         </>

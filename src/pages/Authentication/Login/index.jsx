@@ -20,8 +20,8 @@ const Index = () => {
       content={
         <>
           <form action='' data-aos='fade-left' data-aos-duration='1000'>
-            <Inputfield placeholder='Account Number, UserID' />
-            <Inputfield placeholder='Password' inputType='password' />
+            <Inputfield full primary placeholder='Account Number, UserID' />
+            <Inputfield full primary placeholder='Password' inputType='password' />
             <Checkbox><span style={{ color: '#fff' }}>Remember me</span>
             </Checkbox>
             <Button full primary text='LOGIN' />
