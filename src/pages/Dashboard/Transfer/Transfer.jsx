@@ -3,21 +3,23 @@ import { Button, Inputfield, Selectfield } from '../../../reusables';
 import Container, { TransferContainer } from './styles';
 
 const Index = () => {
+  const [isSelectBank, setIsSelectBank] = React.useState(false);
   return (
     <Container>
       <h1>Funds Transfer</h1>
       <p>Send money to anyone. it's Quick and Easy</p>
       <TransferContainer>
         <h3>Daily Transfer limit: #10,000,0000</h3>
-          <p>
-            Min Transaction Amount: <b>#100</b>{' '}
-          </p>
-          <p>
-            Min Transaction Amount: <b>#10,000,000</b>
-          </p>
-          <br />
+        <p>
+          Min Transaction Amount: <b>#100</b>{' '}
+        </p>
+        <p>
+          Min Transaction Amount: <b>#10,000,000</b>
+        </p>
+        <br />
         <div className='input__group'>
           <Selectfield
+            onValueChange={(e) => setIsSelectBank(true)}
             placeholder="Select Beneficiary's Bank"
             data={[
               { key: 1, value: 'First Bank' },
@@ -25,16 +27,19 @@ const Index = () => {
               { key: 3, value: 'Guaranty Trust Bank' },
             ]}
           />
+          {isSelectBank ? (
+            <Inputfield outline placeholder='Enter Account Number' />
+          ) : (
+            ''
+          )}
+
           <Inputfield
             outline
             placeholder='Enter Amount between 100 - 10,000,000'
           />
-          <Inputfield
-            outline
-            placeholder='Remark (Optional)'
-          />
-        <br />
-        <Button full dark text='Continue' />
+          <Inputfield outline placeholder='Remark (Optional)' />
+          <br />
+          <Button full dark text='Continue' />
         </div>
       </TransferContainer>
     </Container>
