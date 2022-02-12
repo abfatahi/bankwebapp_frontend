@@ -9,7 +9,7 @@ export const columns = [
     title: 'Description',
     dataIndex: 'description',
     key: 'description',
-    width:'700px',
+    width: '700px',
     render: (text) => <Space>{text}</Space>,
   },
   {
@@ -62,81 +62,7 @@ export const columns = [
     ),
   },
 ];
-export const transactionColumns = [
-  {
-    title: 'S/N',
-    render: (item, record, index) => index + 1,
-  },
-  {
-    title: 'Description',
-    dataIndex: 'description',
-    key: 'description',
-    width:'700px',
-    render: (text) => <Space>{text}</Space>,
-  },
-  {
-    title: 'Date',
-    dataIndex: 'date',
-    key: 'date',
-    render: (text, record) => (
-      <Space>
-        {/* {new Date(text).toLocaleDateString()}, &nbsp;
-        {new Date(text).toLocaleTimeString()} */}
-        {text},{record.time}
-      </Space>
-    ),
-  },
-  {
-    title: 'Amount',
-    dataIndex: 'amount',
-    key: 'amount',
-    render: (text) => <Space>#{text.toLocaleString()}</Space>,
-  },
-  {
-    title: 'Type',
-    dataIndex: 'type',
-    key: 'type',
-    render: (text) => (
-      <Space
-        style={{
-          width: '90px',
-          fontSize: 13,
-          padding: '0.5em 1em',
-          margin: '0.5em',
-          display: 'flex',
-          justifyContent: 'center',
-          letterSpacing: '0.07rem',
-          textAlign: 'center',
-          textTransform: 'capitalize',
-          borderRadius: '5px',
-          color:
-            text === 'credit' ? '#19B729' : text === 'debit' ? '#FF8282' : '',
-          background:
-            text === 'credit'
-              ? 'rgba(25, 183, 41, 0.1)'
-              : text === 'debit'
-              ? 'rgba(255, 130, 130, 0.1)'
-              : '',
-        }}
-      >
-        <b>{text}</b>
-      </Space>
-    ),
-  },
-  {
-    title: '...',
-    render: () => (
-      <Space
-        style={{
-          cursor: 'pointer',
-          color:'#e24307'
-        }}
-      >
-        View
-      </Space>
-    ),
-  },
-];
+
 
 export const dummyTransactions = [
   {
@@ -145,7 +71,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'debit',
+    status: 'pending',
   },
   {
     key: 2,
@@ -153,7 +79,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 3,
@@ -161,7 +87,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 45000,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 4,
@@ -169,7 +95,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 5,
@@ -177,7 +103,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'debit',
+    status: 'pending',
   },
   {
     key: 6,
@@ -185,7 +111,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'debit',
+    status: 'pending',
   },
   {
     key: 7,
@@ -193,7 +119,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 8,
@@ -201,7 +127,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 45000,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 9,
@@ -209,7 +135,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 10,
@@ -217,7 +143,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'debit',
+    status: 'pending',
   },
   {
     key: 11,
@@ -225,7 +151,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'debit',
+    status: 'pending',
   },
   {
     key: 12,
@@ -233,7 +159,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 13,
@@ -241,7 +167,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 45000,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 14,
@@ -249,7 +175,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'credit',
+    status: 'success',
   },
 
   {
@@ -259,7 +185,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 18,
@@ -268,7 +194,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 45000,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 15,
@@ -276,7 +202,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'debit',
+    status: 'pending',
   },
   {
     key: 19,
@@ -285,7 +211,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'credit',
+    status: 'success',
   },
   {
     key: 16,
@@ -294,7 +220,7 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'debit',
+    status: 'pending',
   },
   {
     key: 20,
@@ -302,6 +228,6 @@ export const dummyTransactions = [
     date: '20/01/2022',
     time: '9:45am',
     amount: 35090,
-    type: 'debit',
+    status: 'pending',
   },
 ];

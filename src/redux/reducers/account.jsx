@@ -9,10 +9,15 @@ export const accountSlice = createSlice({
     validateBankSuccess: false,
     accountName: '',
     showBalance: false,
+    showTransferModal: false,
   },
   reducers: {
     toggleShowBalance: (state) => {
       state.showBalance = !state.showBalance;
+      return state;
+    },
+    toggleShowTranferModal: (state) => {
+      state.showTransferModal = !state.showTransferModal;
       return state;
     },
   },
@@ -37,6 +42,7 @@ export const accountSlice = createSlice({
   },
 });
 
-export const { toggleShowBalance } = accountSlice.actions;
+export const { toggleShowBalance, toggleShowTranferModal } =
+  accountSlice.actions;
 
 export const accountSelector = (state) => state.account;
