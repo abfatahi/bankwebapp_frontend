@@ -11,17 +11,22 @@ export default Content;
 
 const Container = styled.div`
   position: absolute;
-  top: 64px;
+  top: 60px;
   left: 250px;
   width: calc(100vw - 250px);
-  height: -webkit-calc(100% - 64px);
-  height: -moz-calc(100% - 64px);
-  min-height: calc(100vh - 64px);
+  height: -webkit-calc(100% - 60px);
+  height: -moz-calc(100% - 60px);
+  min-height: calc(100vh - 60px);
   background: #efefef;
   padding: 2rem 3rem;
   color: #666666;
   // overflow-x: hidden !important;
   // overflow-y: scroll !important;
+
+  @media screen and (max-width: 425px) {
+    width:100vw;
+    left:0;
+  }
 
   h1 {
     font-size: 1.8rem;

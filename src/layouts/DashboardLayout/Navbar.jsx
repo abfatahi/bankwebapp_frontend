@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaUser, FaBell, FaChevronCircleLeft } from 'react-icons/fa';
+import {
+  FaUser,
+  FaBell,
+  FaChevronCircleLeft,
+  FaBars,
+} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 // import { clearState } from '../../redux/reducers/auth/login';
 // import { useDispatch } from 'react-redux';
@@ -32,6 +37,7 @@ const Navbar = () => {
         </UserProfile>
         <Logo src={logo} />
       </NavMenu>
+      <Toggle />
     </Container>
   );
 };
@@ -42,7 +48,7 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 64px;
+  height: 60px;
   width: 100vw;
   background: #ffffff;
   border-bottom: 1px solid #e24307;
@@ -51,6 +57,10 @@ const Container = styled.div`
   align-items: center;
   padding: 0 4rem;
   z-index: 999;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 1rem;
+  }
 
   .group {
     display: flex;
@@ -61,10 +71,13 @@ const Container = styled.div`
   h4 {
     font-weight: normal;
     font-size: 18px;
-    line-height: 19px;
     text-align: center;
     letter-spacing: 0.05em;
     color: #e24307;
+
+    @media screen and (max-width: 425px) {
+      font-size: 14px;
+    }
 
     span {
       font-weight: bold;
@@ -83,6 +96,28 @@ const NavMenu = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 425px) {
+    display: none;
+  }
+`;
+
+const Toggle = styled(FaBars)`
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #e24307;
+
+  :hover {
+    transition: 0s all ease-in-out linear;
+  }
+
+  @media screen and (min-width: 425px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 425px) {
+    display: block;
+  }
 `;
 
 const UserProfile = styled.div`
@@ -115,8 +150,8 @@ const UserProfile = styled.div`
 
 const NotificationIcon = styled(FaBell)`
   margin-right: 2.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   color: #e24307;
   cursor: pointer;
 
@@ -128,8 +163,8 @@ const NotificationIcon = styled(FaBell)`
 
 const Avatar = styled(FaUser)`
   margin-right: 0.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   color: #e24307;
   border-radius: 50%;
   padding: 1px;
@@ -140,6 +175,11 @@ const Logout = styled(FaChevronCircleLeft)`
   width: 1.5rem;
   height: 1.5rem;
   color: #e24307;
+
+  @media screen and (max-width: 425px) {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 
   :hover {
     opacity: 0.7;

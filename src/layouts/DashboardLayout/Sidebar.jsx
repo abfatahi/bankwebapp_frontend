@@ -6,10 +6,11 @@ import {
   FaExchangeAlt,
   FaSignOutAlt,
   FaUserAlt,
+  FaTimes,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const [activeTab, setActiveTab] = React.useState('Dashboard');
   const loggedInUser = JSON.parse(localStorage.getItem('user'));
   React.useEffect(() => {
@@ -18,7 +19,8 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <Container>
+    <Container showSidebar={props.showSidebar}>
+      <Close onClick={props.handleClose} />
       <div className='user_info'>
         <FaUserAlt className='avatar' />
         <div className='group'>
@@ -67,6 +69,7 @@ const Sidebar = () => {
         <FaSignOutAlt className='icon' />
         <p>Logout</p>
       </SidebarTabs>
+      <div className='overlay' onClick={props.handleClose} />
     </Container>
   );
 };
@@ -75,15 +78,42 @@ export default Sidebar;
 
 const Container = styled.div`
   position: fixed;
-  top: 64px;
+  top: 60px;
   left: 0;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 60px);
   width: 250px;
   background: #3e464e;
   padding: 1rem 0 0;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+  z-index: ${({ showSidebar }) => (showSidebar ? 20 : 0)};
+
+  @media screen and (max-width: 425px) {
+    display: ${({ showSidebar }) => (showSidebar ? 'flex' : 'none')};
+
+    .overlay {
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100vh;
+      width: calc(100vw - 250px);
+      background: linear-gradient(
+        99.11deg,
+        rgba(49, 66, 79, 0.71) 0.83%,
+        rgba(10, 11, 12, 0.64) 100%
+      );
+      z-index: 19;
+      display: none;
+
+      @media screen and (max-width: 425px) {
+        display: ${({ showSidebar }) => (showSidebar ? 'block' : 'none')};
+      }
+      @media screen and (min-width: 425px) {
+        display: none;
+      }
+    }
+  }
 
   .logout__btn {
     position: absolute;
@@ -134,6 +164,27 @@ const Container = styled.div`
         color: #fff;
       }
     }
+  }
+`;
+
+const Close = styled(FaTimes)`
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #e24307;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  :hover {
+    transition: 0s all ease-in-out linear;
+  }
+
+  @media screen and (min-width: 425px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 425px) {
+    display: block;
   }
 `;
 

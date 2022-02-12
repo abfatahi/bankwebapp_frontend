@@ -3,6 +3,7 @@ import { accountSlice } from './reducers/account';
 import { registerSlice } from './reducers/auth/register';
 import { loginSlice } from './reducers/auth/login';
 import { transferSlice } from './reducers/transfers';
+import { sidebarSlice } from './reducers/sidebars';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import {
@@ -32,6 +33,7 @@ const reducer = combineReducers({
   transfer: persistReducer(transferPersistConfig, transferSlice.reducer),
   register: registerSlice.reducer,
   login: loginSlice.reducer,
+  sidebar: sidebarSlice.reducer,
 });
 
 // const persistedReducer = persistReducer(persistConfig, reducers);

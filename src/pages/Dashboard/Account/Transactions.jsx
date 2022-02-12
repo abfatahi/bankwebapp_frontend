@@ -18,11 +18,7 @@ const Index = () => {
       title: 'Beneficiary',
       dataIndex: 'name',
       key: 'name',
-      render: (text) => (
-        <Space>
-          <b>{text}</b>
-        </Space>
-      ),
+      render: (text) => <Space>{text}</Space>,
     },
     {
       title: 'Bank Name',
