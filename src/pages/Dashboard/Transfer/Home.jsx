@@ -4,10 +4,9 @@ import { AccountTab } from '../../../components/Account';
 import Container, { CardWrapper } from './styles';
 
 const Index = () => {
-  const tab = localStorage.getItem('tab');
   return (
     <Container>
-      <h1>{tab}</h1>
+      <h1>Transfers</h1>
       <p>Transfer money betwen your accounts or other accounts</p>
       <CardWrapper>
         <AccountTab
