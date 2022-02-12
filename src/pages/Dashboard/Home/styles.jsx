@@ -10,6 +10,11 @@ export default styled.div`
   h3 {
     font-weight: bold;
     text-transform: uppercase;
+
+    
+    @media screen and (max-width:425px){
+        font-size:0.8rem;
+    }
   }
 
   .header {
@@ -25,7 +30,13 @@ export default styled.div`
     @media screen and (max-width:768px){
       width:100%;
     }
-    
+
+    @media screen and (max-width:425px){
+      b, h3{
+        font-size:0.8rem;
+      }
+    }
+
     .balance__group {
       display: flex;
       gap: 1rem;

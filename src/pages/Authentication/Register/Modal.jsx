@@ -45,6 +45,10 @@ const ModalContainer = styled(Modal)`
   display: flex;
   align-items: center;
 
+  @media screen and (max-width: 425px) {
+    width: 90% !important;
+  }
+
   .container {
     // margin: 2rem 0;
     display: flex;

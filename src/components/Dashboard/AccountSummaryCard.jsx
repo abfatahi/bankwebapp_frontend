@@ -46,6 +46,7 @@ const Container = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 100%;
+    height: 180px;
   }
 
   .first__row {
@@ -68,6 +69,10 @@ const Container = styled.div`
         font-size: 2rem;
         font-weight: bold;
         color: #fff;
+
+        @media screen and (max-width:425px){
+          font-size:1.3rem;
+        }
       }
 
       p {

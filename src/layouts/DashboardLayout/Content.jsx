@@ -31,6 +31,10 @@ const Container = styled.div`
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 1rem;
+
+    @media screen and (max-width: 425px) {
+      font-size: 1.3rem;
+    }
   }
 
   p.error-msg {
