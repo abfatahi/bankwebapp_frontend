@@ -4,37 +4,30 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { accountSelector } from '../../redux/reducers/account';
 
-const loggedInUser = JSON.parse(localStorage.getItem('user'));
-
-const Index = (props) => {
+const Index = () => {
+  const loggedInUser = JSON.parse(localStorage.getItem('user'));
   const { showBalance } = useSelector(accountSelector);
   return (
     <Container>
-      <div className='first__row'>
-        <div className='balance__group'>
-          <div className='available__balance'>
-            # {showBalance ? props.availableBalance.toLocaleString() : 'XXXXXX'}
+      {loggedInUser && (
+        <>
+          <div className='first__row'>
+            <div className='balance__group'>
+              <div className='available__balance'>
+                # {showBalance ? '450,000' : 'XXXXXX'}
+              </div>
+              <p>Book Balance: #{showBalance ? '500,000' : 'XXXXXX'}</p>
+            </div>
+            <FaCheckCircle className='icon' />
           </div>
-          <p>
-            Book Balance: #
-            {showBalance ? props.bookBalance.toLocaleString() : 'XXXXXX'}
-          </p>
-        </div>
-        <FaCheckCircle className='icon' />
-      </div>
-      <div className='second_row'>
-        <h3>{props.accountNumber}</h3>
-        <h4>{props.accountName}</h4>
-      </div>
+          <div className='second_row'>
+            <h3>{loggedInUser.accountName}</h3>
+            <h4>0089728686</h4>
+          </div>
+        </>
+      )}
     </Container>
   );
-};
-
-export const dummyData = {
-  availableBalance: 450000,
-  bookBalance: 500000,
-  accountNumber: '0089728686',
-  accountName: loggedInUser.fullname,
 };
 
 export default Index;
@@ -47,14 +40,14 @@ const Container = styled.div`
   border-radius: 10px;
   background: #3e464e;
 
-  @media screen and (max-width:1024px){
-    width:60%;
+  @media screen and (max-width: 1024px) {
+    width: 60%;
   }
 
-  @media screen and (max-width:768px){
-    width:100%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
-  
+
   .first__row {
     display: flex;
     justify-content: space-between;

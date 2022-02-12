@@ -3,7 +3,6 @@ import { Switch, Table } from 'antd';
 import { DashboardLayout } from '../../../layouts';
 import Container from './styles';
 import { AccountSummaryCard } from '../../../components/Dashboard';
-import { dummyData } from '../../../components/Dashboard/AccountSummaryCard';
 import { columns } from '../../../utils/tables';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -34,7 +33,7 @@ const Index = () => {
               {showBalance ? <b>ON</b> : <b>OFF</b>}
             </div>
           </div>
-          <AccountSummaryCard {...dummyData} />
+          <AccountSummaryCard />
           <br />
           <br />
           <h3>Recent Transactions</h3>
