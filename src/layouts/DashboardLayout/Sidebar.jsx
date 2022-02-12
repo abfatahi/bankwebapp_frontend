@@ -19,8 +19,7 @@ const Sidebar = (props) => {
   React.useEffect(() => {
     const tab = localStorage.getItem('tab');
     setActiveTab(tab);
-    dispatch(toggleSidebar());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Container showSidebar={props.showSidebar}>
@@ -36,6 +35,7 @@ const Sidebar = (props) => {
       <SidebarTabs
         onClick={() => {
           localStorage.setItem('tab', 'Dashboard');
+          dispatch(toggleSidebar());
         }}
         className={activeTab === 'Dashboard' ? 'active' : ''}
         to={'/'}
@@ -46,6 +46,7 @@ const Sidebar = (props) => {
       <SidebarTabs
         onClick={() => {
           localStorage.setItem('tab', 'Accounts');
+          dispatch(toggleSidebar());
         }}
         className={activeTab === 'Accounts' ? 'active' : ''}
         to={'/account'}
@@ -56,6 +57,7 @@ const Sidebar = (props) => {
       <SidebarTabs
         onClick={() => {
           localStorage.setItem('tab', 'Transfers');
+          dispatch(toggleSidebar());
         }}
         className={activeTab === 'Transfers' ? 'active' : ''}
         to={'/transfer'}
@@ -65,7 +67,8 @@ const Sidebar = (props) => {
       </SidebarTabs>
       <SidebarTabs
         onClick={() => {
-          localStorage.clear();
+          localStorage.removeItem('token');
+          dispatch(toggleSidebar());
         }}
         className='logout__btn'
         to={'/login'}
