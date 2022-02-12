@@ -21,7 +21,7 @@ const Index = () => {
             <FaCheckCircle className='icon' />
           </div>
           <div className='second_row'>
-            <h3>{loggedInUser.accountName}</h3>
+            <h3>{loggedInUser.fullname}</h3>
             <h4>0089728686</h4>
           </div>
         </>
