@@ -1,13 +1,15 @@
 import React from 'react';
 import { Table, Space } from 'antd';
-import Container from './styles';
+import Container, { GoBack } from './styles';
 import { TransferDetailsModal } from './Modals';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleShowTranferModal } from '../../../redux/reducers/account';
 import { transferSelector } from '../../../redux/reducers/transfers';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const { transfers } = useSelector(transferSelector);
   const transactionColumns = [
     {
@@ -91,7 +93,10 @@ const Index = () => {
   return (
     <Container>
       <TransferDetailsModal />
-      <h1>Transaction History</h1>
+      <div className='header'>
+        <GoBack onClick={() => Navigate('/account')} />
+        <h1>Transaction History</h1>
+      </div>
       <p>
         View your transactions over a selected range of time, default range is
         set to one week from current date
