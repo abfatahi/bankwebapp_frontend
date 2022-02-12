@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { baseURL, paystackTestSecretKey } from '../../utils/api';
 
-export const validateAccount = createAsyncThunk(
-  'validate/account',
+
+export const transferFunds = createAsyncThunk(
+  'transfer/funds',
   async ({ beneficiaryBankCode, beneficiaryNumber }, thunkAPI) => {
     try {
       const response = await fetch(
-        `${baseURL}bank/resolve?account_number=${beneficiaryNumber}&bank_code=${beneficiaryBankCode}`,
+        `${baseURL}/transferrecipient`,
         {
           method: 'GET',
           headers: {
@@ -30,4 +31,3 @@ export const validateAccount = createAsyncThunk(
     }
   }
 );
-

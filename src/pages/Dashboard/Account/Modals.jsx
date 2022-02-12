@@ -26,14 +26,16 @@ export const TransferDetailsModal = (props, { status = 'pending' }) => {
             <div className='value'>Rfs083864{transaction.key}</div>
           </div>
           <div className='group'>
-            <div className='title'>Recipient Name:</div>
-            <div className='value'>John Doe</div>
+            <div className='title'>Beneficiary Name:</div>
+            <div className='value'>{transaction.account_name}</div>
           </div>
           <div className='group'>
-            <div className='title'>Recipient Account:</div>
-            <div className='value'>
-              {transaction.account_name} ({transaction.number})
-            </div>
+            <div className='title'>Beneficiary Account:</div>
+            <div className='value'>{transaction.account_number}</div>
+          </div>
+          <div className='group'>
+            <div className='title'>Beneficiary Bank:</div>
+            <div className='value'>{transaction.bank_name}</div>
           </div>
           <div className='group'>
             <div className='title'>Amount</div>
@@ -45,11 +47,13 @@ export const TransferDetailsModal = (props, { status = 'pending' }) => {
           </div>
           <div className='group'>
             <div className='title'>Narration</div>
-            <div className='value'>{transaction.reason}</div>
+            <div className='value'>{transaction.description}</div>
           </div>
           <div className='group'>
             <div className='title'>Status</div>
-            <div className={`status ${transaction.status}`}>{transaction.status}</div>
+            <div className={`status ${transaction.status}`}>
+              {transaction.status}
+            </div>
           </div>
         </div>
       )}

@@ -8,17 +8,39 @@ import { toggleShowTranferModal } from '../../../redux/reducers/account';
 
 const Index = () => {
   const dispatch = useDispatch();
+  
   const transactionColumns = [
     {
       title: 'S/N',
       render: (item, record, index) => index + 1,
     },
     {
-      title: 'Description',
-      dataIndex: 'description',
-      key: 'description',
-      width: '700px',
+      title: 'Beneficiary',
+      dataIndex: 'account_name',
+      key: 'account_name',
+      render: (text) => (
+        <Space>
+          <b>{text}</b>
+        </Space>
+      ),
+    },
+    {
+      title: 'Bank Name',
+      dataIndex: 'bank_name',
+      key: 'bank_name',
       render: (text) => <Space>{text}</Space>,
+    },
+    {
+      title: 'Beneficiary Number',
+      dataIndex: 'account_number',
+      key: 'account_number',
+      render: (text) => <Space>{text}</Space>,
+    },
+    {
+      title: 'Amount',
+      dataIndex: 'amount',
+      key: 'amount',
+      render: (text) => <Space>#{text.toLocaleString()}</Space>,
     },
     {
       title: 'Date',
@@ -33,28 +55,16 @@ const Index = () => {
       ),
     },
     {
-      title: 'Amount',
-      dataIndex: 'amount',
-      key: 'amount',
-      render: (text) => <Space>#{text.toLocaleString()}</Space>,
-    },
-    {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (text) => (
         <Space
           style={{
-            width: '90px',
             fontSize: 13,
-            padding: '0.5em 1em',
-            margin: '0.5em',
-            display: 'flex',
-            justifyContent: 'center',
             letterSpacing: '0.07rem',
             textAlign: 'center',
             textTransform: 'capitalize',
-            borderRadius: '5px',
             color:
               text === 'success'
                 ? '#19B729'
@@ -63,14 +73,6 @@ const Index = () => {
                 : text === 'rejected'
                 ? '#FF8282'
                 : '',
-            background:
-              text === 'success'
-                ? 'rgba(25, 183, 41, 0.1)'
-                : text === 'pending'
-                ? 'rgba(255, 173, 51, 0.1)'
-                : text === 'rejected'
-                ? 'rgba(255, 130, 130, 0.1)'
-                : '',
           }}
         >
           <b>{text}</b>
@@ -78,7 +80,7 @@ const Index = () => {
       ),
     },
     {
-      title: '...',
+      title: 'Action',
       render: (text, row) => (
         <Space
           onClick={() => {
@@ -87,7 +89,7 @@ const Index = () => {
           }}
           style={{
             cursor: 'pointer',
-            color: '#e24307',
+            fontWeight: 'bold',
           }}
         >
           View
@@ -95,6 +97,7 @@ const Index = () => {
       ),
     },
   ];
+
   return (
     <Container>
       <TransferDetailsModal />
