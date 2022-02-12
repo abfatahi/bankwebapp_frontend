@@ -23,11 +23,11 @@ export const TransferDetailsModal = (props, { status = 'pending' }) => {
           <h2>Transfer Details</h2>
           <div className='group'>
             <div className='title'>Transaction ID:</div>
-            <div className='value'>Rfs083864{transaction.key}</div>
+            <div className='value'>{transaction.id}</div>
           </div>
           <div className='group'>
             <div className='title'>Beneficiary Name:</div>
-            <div className='value'>{transaction.account_name}</div>
+            <div className='value'>{transaction.name}</div>
           </div>
           <div className='group'>
             <div className='title'>Beneficiary Account:</div>
@@ -43,11 +43,21 @@ export const TransferDetailsModal = (props, { status = 'pending' }) => {
           </div>
           <div className='group'>
             <div className='title'>Date</div>
-            <div className='value'>{transaction.date}</div>
+            <div className='value'>
+              {transaction.createdAt &&
+                new Date(transaction.createdAt).toLocaleDateString()}
+            </div>
+          </div>
+          <div className='group'>
+            <div className='title'>Date</div>
+            <div className='value'>
+              {transaction.createdAt &&
+                new Date(transaction.createdAt).toLocaleTimeString()}
+            </div>
           </div>
           <div className='group'>
             <div className='title'>Narration</div>
-            <div className='value'>{transaction.description}</div>
+            <div className='value'>{transaction.reason}</div>
           </div>
           <div className='group'>
             <div className='title'>Status</div>

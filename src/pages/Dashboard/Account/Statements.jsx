@@ -1,9 +1,12 @@
 import React from 'react';
 import { Table } from 'antd';
 import Container from './styles';
-import { dummyTransactions, columns } from '../../../utils/tables';
+import { columns } from '../../../utils/tables';
+import {  useSelector } from 'react-redux';
+import { transferSelector } from '../../../redux/reducers/transfers';
 
 const Index = () => {
+  const { transfers } = useSelector(transferSelector);
   return (
     <Container>
       <h1>Account Statement</h1>
@@ -14,7 +17,7 @@ const Index = () => {
       <h3>Recent Transactions</h3>
       <br />
 
-      <Table dataSource={dummyTransactions} columns={columns} />
+      <Table dataSource={transfers} columns={columns} />
     </Container>
   );
 };

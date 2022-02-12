@@ -4,17 +4,19 @@ import { DashboardLayout } from '../../../layouts';
 import Container from './styles';
 import { AccountSummaryCard } from '../../../components/Dashboard';
 import { dummyData } from '../../../components/Dashboard/AccountSummaryCard';
-import { dummyTransactions, columns } from '../../../utils/tables';
+import { columns } from '../../../utils/tables';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleShowBalance,
   accountSelector,
 } from '../../../redux/reducers/account';
+import { transferSelector } from '../../../redux/reducers/transfers';
 
 const Index = () => {
   const tab = localStorage.getItem('tab');
   const dispatch = useDispatch();
   const { showBalance } = useSelector(accountSelector);
+  const { transfers } = useSelector(transferSelector);
   return (
     <DashboardLayout
       content={
@@ -38,11 +40,7 @@ const Index = () => {
           <h3>Recent Transactions</h3>
           <br />
           <Table
-            dataSource={
-              dummyTransactions.length > 0
-                ? dummyTransactions.slice(-5)
-                : dummyTransactions
-            }
+            dataSource={transfers.length > 0 ? transfers.slice(-5) : transfers}
             columns={columns}
             pagination={false}
           />

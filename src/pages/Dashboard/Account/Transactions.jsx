@@ -1,14 +1,14 @@
 import React from 'react';
 import { Table, Space } from 'antd';
 import Container from './styles';
-import { dummyTransactions } from '../../../utils/tables';
 import { TransferDetailsModal } from './Modals';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleShowTranferModal } from '../../../redux/reducers/account';
+import { transferSelector } from '../../../redux/reducers/transfers';
 
 const Index = () => {
   const dispatch = useDispatch();
-  
+  const { transfers } = useSelector(transferSelector);
   const transactionColumns = [
     {
       title: 'S/N',
@@ -16,8 +16,8 @@ const Index = () => {
     },
     {
       title: 'Beneficiary',
-      dataIndex: 'account_name',
-      key: 'account_name',
+      dataIndex: 'name',
+      key: 'name',
       render: (text) => (
         <Space>
           <b>{text}</b>
@@ -44,15 +44,9 @@ const Index = () => {
     },
     {
       title: 'Date',
-      dataIndex: 'date',
-      key: 'date',
-      render: (text, record) => (
-        <Space>
-          {/* {new Date(text).toLocaleDateString()}, &nbsp;
-          {new Date(text).toLocaleTimeString()} */}
-          {text},{record.time}
-        </Space>
-      ),
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      render: (text) => <Space>{new Date(text).toLocaleDateString()}</Space>,
     },
     {
       title: 'Status',
@@ -108,7 +102,7 @@ const Index = () => {
       </p>
       <h3>Recent Transactions</h3>
       <br />
-      <Table dataSource={dummyTransactions} columns={transactionColumns} />
+      <Table dataSource={transfers} columns={transactionColumns} />
     </Container>
   );
 };
