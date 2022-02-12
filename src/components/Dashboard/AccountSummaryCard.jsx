@@ -47,6 +47,14 @@ const Container = styled.div`
   border-radius: 10px;
   background: #3e464e;
 
+  @media screen and (max-width:1024px){
+    width:60%;
+  }
+
+  @media screen and (max-width:768px){
+    width:100%;
+  }
+  
   .first__row {
     display: flex;
     justify-content: space-between;

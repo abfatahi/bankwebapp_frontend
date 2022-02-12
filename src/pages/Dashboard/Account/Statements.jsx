@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'antd';
 import Container from './styles';
 import { columns } from '../../../utils/tables';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { transferSelector } from '../../../redux/reducers/transfers';
 
 const Index = () => {
@@ -17,7 +17,7 @@ const Index = () => {
       <h3>Recent Transactions</h3>
       <br />
 
-      <Table dataSource={transfers} columns={columns} />
+      <Table dataSource={transfers} columns={columns} scroll={{ x: 1250 }} />
     </Container>
   );
 };

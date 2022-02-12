@@ -3,7 +3,7 @@ import { accountSlice } from './reducers/account';
 import { registerSlice } from './reducers/auth/register';
 import { loginSlice } from './reducers/auth/login';
 import { transferSlice } from './reducers/transfers';
-import { sidebarSlice } from './reducers/sidebars';
+import { sidebarSlice } from './reducers/sidebar';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import {

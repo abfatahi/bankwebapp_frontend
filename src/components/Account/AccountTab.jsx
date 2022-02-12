@@ -25,6 +25,12 @@ const Container = styled.div`
   gap: 10px;
   cursor: pointer;
 
+  @media screen and (max-width:425px){
+    width:150px;
+    height:150px;
+    padding:1rem;
+  }
+
   .icon {
     width: 30px;
     height: 50px;

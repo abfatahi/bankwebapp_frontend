@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { BsEye, BsEyeSlashFill } from 'react-icons/bs';
 
 const Container = styled.div`
-  width: ${({ full }) => (full ? '100%' : '400px')};
+  width: ${({ full }) => (full ? '100%' : '100%')};
   .group {
     display: flex;
     align-items: center;

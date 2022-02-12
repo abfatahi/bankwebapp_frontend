@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  width: 100%;
+  // width: 100%;
 
   p {
     margin-bottom: 2rem !important;
@@ -16,13 +16,21 @@ export const CardWrapper = styled.div`
 `;
 
 export const TransferContainer = styled.form`
-  width: 40%;
+  width: 50%;
   background: #fff;
   border-radius: 10px;
-  padding: 2rem 3rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   // gap: 1.2rem;
+
+  @media screen and (max-width:1024px){
+    width:60%;
+  }
+
+  @media screen and (max-width:768px){
+    width:100%;
+  }
 
   h3 {
     font-weight: bold;
@@ -38,7 +46,7 @@ export const TransferContainer = styled.form`
   gap: 1rem;
 }
   .input__group {
-    width: 400px;
+    // width: 50px;
     display: flex;
     flex-direction: column;
     gap: 1rem;

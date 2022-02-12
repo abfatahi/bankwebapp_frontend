@@ -1,19 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  FaUser,
-  FaBell,
-  FaChevronCircleLeft,
-  FaBars,
-} from 'react-icons/fa';
+import { FaUser, FaBell, FaChevronCircleLeft, FaBars } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-// import { clearState } from '../../redux/reducers/auth/login';
-// import { useDispatch } from 'react-redux';
 import { Logo as logo } from '../../assets/images';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const loggedInUser = JSON.parse(localStorage.getItem('user'));
-  // const dispatch = useDispatch();
   const Navigate = useNavigate();
   const signout = () => {
     localStorage.removeItem('token');
@@ -37,7 +29,7 @@ const Navbar = () => {
         </UserProfile>
         <Logo src={logo} />
       </NavMenu>
-      <Toggle />
+      <Toggle onClick={props.toggleSidebar} />
     </Container>
   );
 };
@@ -56,7 +48,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 4rem;
-  z-index: 999;
+  z-index: 500;
 
   @media screen and (max-width: 768px) {
     padding: 0 1rem;

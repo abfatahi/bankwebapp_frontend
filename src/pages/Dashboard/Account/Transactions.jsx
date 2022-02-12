@@ -98,7 +98,11 @@ const Index = () => {
       </p>
       <h3>Recent Transactions</h3>
       <br />
-      <Table dataSource={transfers} columns={transactionColumns} />
+      <Table
+        dataSource={transfers}
+        columns={transactionColumns}
+        scroll={{ x: 1250 }}
+      />
     </Container>
   );
 };

@@ -43,6 +43,7 @@ const Index = () => {
             dataSource={transfers.length > 0 ? transfers.slice(-5) : transfers}
             columns={columns}
             pagination={false}
+            scroll={{ x: 1250 }}
           />
         </Container>
       }

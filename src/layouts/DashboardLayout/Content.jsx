@@ -20,12 +20,11 @@ const Container = styled.div`
   background: #efefef;
   padding: 2rem 3rem;
   color: #666666;
-  // overflow-x: hidden !important;
-  // overflow-y: scroll !important;
 
   @media screen and (max-width: 425px) {
-    width:100vw;
-    left:0;
+    width: 100vw;
+    left: 0;
+    padding: 1.5rem 1rem 2rem;
   }
 
   h1 {

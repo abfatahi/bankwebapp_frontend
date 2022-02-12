@@ -28,7 +28,7 @@ export default Selectfield;
 
 const Container = styled.div`
   position: relative;
-  width: ${({ full }) => (full ? '100%' : '400px')};
+  width: ${({ full }) => (full ? '100%' : '100%')};
 
   .group {
     display: flex;

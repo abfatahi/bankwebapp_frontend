@@ -9,18 +9,22 @@ import {
   FaTimes,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toggleSidebar } from '../../redux/reducers/sidebar';
+import { useDispatch } from 'react-redux';
 
 const Sidebar = (props) => {
+  const dispatch = useDispatch();
   const [activeTab, setActiveTab] = React.useState('Dashboard');
   const loggedInUser = JSON.parse(localStorage.getItem('user'));
   React.useEffect(() => {
     const tab = localStorage.getItem('tab');
     setActiveTab(tab);
-  }, []);
+    dispatch(toggleSidebar());
+  }, [dispatch]);
 
   return (
     <Container showSidebar={props.showSidebar}>
-      <Close onClick={props.handleClose} />
+      <Close onClick={props.toggleSidebar} />
       <div className='user_info'>
         <FaUserAlt className='avatar' />
         <div className='group'>
@@ -69,7 +73,7 @@ const Sidebar = (props) => {
         <FaSignOutAlt className='icon' />
         <p>Logout</p>
       </SidebarTabs>
-      <div className='overlay' onClick={props.handleClose} />
+      <div className='overlay' onClick={props.toggleSidebar} />
     </Container>
   );
 };
@@ -91,7 +95,9 @@ const Container = styled.div`
 
   @media screen and (max-width: 425px) {
     display: ${({ showSidebar }) => (showSidebar ? 'flex' : 'none')};
-
+    height: 100vh;
+    top: 0;
+    z-index: 1000;
     .overlay {
       position: fixed;
       right: 0;
@@ -103,14 +109,11 @@ const Container = styled.div`
         rgba(49, 66, 79, 0.71) 0.83%,
         rgba(10, 11, 12, 0.64) 100%
       );
-      z-index: 19;
       display: none;
 
       @media screen and (max-width: 425px) {
         display: ${({ showSidebar }) => (showSidebar ? 'block' : 'none')};
-      }
-      @media screen and (min-width: 425px) {
-        display: none;
+        z-index: 900;
       }
     }
   }

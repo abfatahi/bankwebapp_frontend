@@ -18,6 +18,14 @@ export default styled.div`
     justify-content: space-between;
     margin-bottom: 1rem;
 
+    @media screen and (max-width:1024px){
+      width:60%;
+    }
+
+    @media screen and (max-width:768px){
+      width:100%;
+    }
+    
     .balance__group {
       display: flex;
       gap: 1rem;
