@@ -1,43 +1,47 @@
-// import { createSlice } from '@reduxjs/toolkit';
-// import { transferFunds } from '../actions/transfers';
+import { createSlice } from '@reduxjs/toolkit';
+import { transferFunds } from '../actions/transfers';
 
-// export const transferSlice = createSlice({
-//   name: 'transfer',
-//   initialState: {
-//     transfers:[],
-//   },
-// //   reducers: {
-// //     toggleShowBalance: (state) => {
-// //       state.showBalance = !state.showBalance;
-// //       return state;
-// //     },
-// //     toggleShowTranferModal: (state) => {
-// //       state.showTransferModal = !state.showTransferModal;
-// //       return state;
-// //     },
-// //   },
-//   extraReducers: {
-//     [validateAccount.pending]: (state) => {
-//       state.validateBankLoading = true;
-//       return state;
-//     },
-//     [validateAccount.fulfilled]: (state, { payload }) => {
-//       state.validateBankLoading = false;
-//       state.validateBankError = false;
-//       state.validateBankSuccess = true;
-//       state.accountName = payload.account_name;
-//       return state;
-//     },
-//     [validateAccount.rejected]: (state) => {
-//       state.validateBankLoading = false;
-//       state.validateBankError = true;
-//       state.validateBankSuccess = false;
-//       return state;
-//     },
-//   },
-// });
+export const transferSlice = createSlice({
+  name: 'transfer',
 
-// export const { toggleShowBalance, toggleShowTranferModal } =
-//   accountSlice.actions;
+  initialState: {
+    transfers: [],
+    loading: false,
+    error: false,
+    success: false,
+  },
 
-// export const accountSelector = (state) => state.account;
+  reducers: {
+    clearState: (state) => {
+      state.loading = false;
+      state.error = false;
+      state.success = false;
+      return state;
+    },
+  },
+  
+  extraReducers: {
+    [transferFunds.pending]: (state) => {
+      state.loading = true;
+      return state;
+    },
+    [transferFunds.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.error = false;
+      state.success = true;
+      state.transfers.push(payload);
+      return state;
+    },
+    [transferFunds.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = true;
+      state.success = false;
+      state.transfers.push(payload);
+      return state;
+    },
+  },
+});
+
+export const { clearState } = transferSlice.actions;
+
+export const transferSelector = (state) => state.transfer;

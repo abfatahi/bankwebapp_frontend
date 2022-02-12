@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { accountSlice } from './reducers/account';
 import { registerSlice } from './reducers/auth/register';
 import { loginSlice } from './reducers/auth/login';
+import { transferSlice } from './reducers/transfers';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import {
@@ -14,22 +15,29 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-const reducers = combineReducers({
+const transferPersistConfig = {
+  key: 'transfer',
+  storage,
+  blacklist: ['error', 'success', 'loading'],
+};
+// const persistConfig = {
+//   key: 'root',
+//   blacklist: ['account', 'login', 'register'],
+//   version: 1,
+//   storage,
+// };
+
+const reducer = combineReducers({
   account: accountSlice.reducer,
+  transfer: persistReducer(transferPersistConfig, transferSlice.reducer),
   register: registerSlice.reducer,
   login: loginSlice.reducer,
 });
 
-const persistConfig = {
-  key: 'root',
-  version: 1,
-  storage,
-};
-
-const persistedReducer = persistReducer(persistConfig, reducers);
+// const persistedReducer = persistReducer(persistConfig, reducers);
 
 export default configureStore({
-  reducer: persistedReducer,
+  reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

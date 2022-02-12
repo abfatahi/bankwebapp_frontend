@@ -3,10 +3,10 @@ import { baseURL, paystackTestSecretKey } from '../../utils/api';
 
 export const validateAccount = createAsyncThunk(
   'validate/account',
-  async ({ beneficiaryBankCode, beneficiaryNumber }, thunkAPI) => {
+  async ({ bank_code, account_number }, thunkAPI) => {
     try {
       const response = await fetch(
-        `${baseURL}bank/resolve?account_number=${beneficiaryNumber}&bank_code=${beneficiaryBankCode}`,
+        `${baseURL}bank/resolve?account_number=${account_number}&bank_code=${bank_code}`,
         {
           method: 'GET',
           headers: {
@@ -30,4 +30,3 @@ export const validateAccount = createAsyncThunk(
     }
   }
 );
-

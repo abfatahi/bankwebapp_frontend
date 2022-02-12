@@ -5,6 +5,9 @@ import { Button, Inputfield, Selectfield } from '../../../reusables';
 import { bankList } from '../../../utils/data';
 import Container, { TransferContainer } from './styles';
 import { accountSelector } from '../../../redux/reducers/account';
+import { transferFunds } from '../../../redux/actions/transfers';
+import { transferSelector } from '../../../redux/reducers/transfers';
+import { TransferFailureModal } from './Modal';
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -16,24 +19,26 @@ const Index = () => {
     accountName,
   } = useSelector(accountSelector);
 
+  const { loading } = useSelector(transferSelector);
+
   const [newTransfer, setNewTransfer] = React.useState({
-    beneficiaryBank: '',
-    beneficiaryBankCode: '',
-    beneficiaryName: '',
-    beneficiaryNumber: '',
+    bank_name: '',
+    bank_code: '',
+    name: '',
+    account_number: '',
     amount: '',
-    remark: '',
+    reason: '',
     submitted: false,
     isValidAccount: null,
   });
 
   const {
-    beneficiaryBank,
-    beneficiaryBankCode,
-    beneficiaryName,
-    beneficiaryNumber,
+    // bank_name,
+    bank_code,
+    name,
+    account_number,
     amount,
-    remark,
+    reason,
     submitted,
     isValidAccount,
   } = newTransfer;
@@ -46,23 +51,25 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setNewTransfer((prevState) => ({ ...prevState, submitted: true }));
-    // if()
+    if (name && account_number && bank_code && amount) {
+      dispatch(transferFunds(newTransfer));
+    }
   };
 
   const handleValidateAccount = (e) => {
     e.preventDefault();
-    console.log(beneficiaryNumber.length);
-    if (beneficiaryNumber.length === 10) {
+    console.log(account_number.length);
+    if (account_number.length === 10) {
       setNewTransfer((prevState) => ({
         ...prevState,
         isValidAccount: true,
       }));
       const payload = {
-        beneficiaryBankCode,
-        beneficiaryNumber,
+        bank_code,
+        account_number,
       };
       dispatch(validateAccount(payload));
-    } else if (beneficiaryNumber.length < 10 || beneficiaryNumber.length > 10) {
+    } else if (account_number.length < 10 || account_number.length > 10) {
       setNewTransfer((prevState) => ({
         ...prevState,
         isValidAccount: false,
@@ -74,13 +81,14 @@ const Index = () => {
     if (validateBankSuccess) {
       setNewTransfer((prevState) => ({
         ...prevState,
-        beneficiaryName: accountName,
+        name: accountName,
       }));
     }
   }, [setNewTransfer, validateBankSuccess, accountName]);
 
   return (
     <Container>
+      <TransferFailureModal />
       <h1>Funds Transfer</h1>
       <p>Send money to anyone. it's Quick and Easy</p>
       <TransferContainer onSubmit={handleSubmit}>
@@ -95,31 +103,30 @@ const Index = () => {
         <div className='input__group'>
           <div className='input'>
             <Selectfield
-              onValueChange={(e) =>
+              onValueChange={(e) => {
                 setNewTransfer((prevState) => ({
                   ...prevState,
-                  beneficiaryBankCode: e.target.value,
-                  beneficiaryBank: e.target.name,
-                }))
-              }
+                  bank_code: e.target.value,
+                  bank_name: e.target.options[e.target.selectedIndex].text,
+                }));
+              }}
               placeholder="Select Beneficiary's Bank"
               data={bankList}
             />
-            {submitted && !beneficiaryBank && (
+            {/* {submitted && !bank_name && (
               <p className='error-msg'>Beneficiary bank is required</p>
-            )}
+            )} */}
           </div>
-          {beneficiaryBankCode && (
+          {bank_code && (
             <div className='group'>
               <Inputfield
-                fieldname='beneficiaryNumber'
-                inputType='number'
+                fieldname='account_number'
                 outline
-                value={beneficiaryNumber}
+                value={account_number}
                 placeholder='Enter Account Number'
                 onTextChange={handleChange}
               />
-              {!beneficiaryName && (
+              {!name && (
                 <Button
                   onClick={handleValidateAccount}
                   loading={validateBankLoading}
@@ -132,29 +139,28 @@ const Index = () => {
           {validateBankError && (
             <p className='error-msg'>Unable to validate account!</p>
           )}
-          {submitted && !beneficiaryNumber && (
+          {submitted && !account_number && (
             <p className='error-msg'>Beneficiary account number is required</p>
           )}
           {isValidAccount === false &&
-            (beneficiaryNumber.length < 10 ||
-              beneficiaryNumber.length > 10) && (
+            (account_number.length < 10 || account_number.length > 10) && (
               <p className='error-msg'>Invalid Account Number</p>
             )}
-          {beneficiaryName && (
+          {name && (
             <div className='input'>
               <Inputfield
-                fieldname='beneficiaryName'
+                fieldname='name'
                 outline
-                value={beneficiaryName}
+                value={name}
                 readOnly
                 onTextChange={handleChange}
               />
-              {submitted && !beneficiaryName && (
+              {submitted && !name && (
                 <p className='error-msg'>Beneficiary name is required</p>
               )}
             </div>
           )}
-          {beneficiaryBankCode && !beneficiaryName && (
+          {bank_code && !name && (
             <p>
               <b> Validate Account Number to Proceed</b>
             </p>
@@ -166,7 +172,7 @@ const Index = () => {
               inputType='number'
               value={amount}
               placeholder='Enter Amount between 100 - 10,000,000'
-              readOnly={!beneficiaryName ? true : false}
+              readOnly={!name ? true : false}
               onTextChange={handleChange}
             />
             {submitted && !amount && (
@@ -181,17 +187,18 @@ const Index = () => {
           </div>
           <div className='input'>
             <Inputfield
-              fieldname='remark'
+              fieldname='reason'
               outline
-              value={remark}
-              readOnly={!beneficiaryName ? true : false}
-              placeholder='Remark (Optional)'
+              value={reason}
+              readOnly={!name ? true : false}
+              placeholder='reason (Optional)'
               onTextChange={handleChange}
             />
           </div>
           <br />
           <Button
-            disabled={!beneficiaryName ? true : false}
+            loading={loading}
+            disabled={!name ? true : false}
             full
             dark
             text='Continue'
