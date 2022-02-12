@@ -58,7 +58,6 @@ const Index = () => {
 
   const handleValidateAccount = (e) => {
     e.preventDefault();
-    console.log(account_number.length);
     if (account_number.length === 10) {
       setNewTransfer((prevState) => ({
         ...prevState,
