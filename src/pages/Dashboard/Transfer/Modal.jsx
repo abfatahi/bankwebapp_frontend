@@ -57,12 +57,21 @@ const ModalContainer = styled(Modal)`
       color: #000000;
       text-align: center;
       text-transform: capitalize;
+
+      @media screen and (max-width: 425px) {
+        font-size: 16px;
+      }
     }
 
     .img {
       width: 86px;
       height: 86px;
       color: #e24307;
+
+      @media screen and (max-width: 425px) {
+        width: 64px;
+        height: 64px;
+      }
     }
   }
 `;

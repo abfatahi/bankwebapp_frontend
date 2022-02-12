@@ -98,6 +98,10 @@ const ModalContainer = styled(Modal)`
       color: #000000;
       text-align: center;
       text-transform: capitalize;
+
+      @media screen and (max-width: 425px) {
+        font-size: 20px;
+      }
     }
 
     .status {
@@ -106,7 +110,12 @@ const ModalContainer = styled(Modal)`
       flex: 1;
       font-style: normal;
       font-size: 16px;
+
+      @media screen and (max-width: 425px) {
+        font-size: 14px;
+      }
     }
+
     .pending {
       color: #ffad33 !important;
     }
@@ -131,6 +140,10 @@ const ModalContainer = styled(Modal)`
       font-weight: 600;
       font-size: 16px;
       color: #000000;
+
+      @media screen and (max-width: 425px) {
+        font-size: 14px;
+      }
     }
 
     .value {
@@ -138,6 +151,10 @@ const ModalContainer = styled(Modal)`
       font-style: normal;
       font-size: 16px;
       color: #000000;
+
+      @media screen and (max-width: 425px) {
+        font-size: 14px;
+      }
     }
   }
 `;
