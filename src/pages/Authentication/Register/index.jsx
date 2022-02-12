@@ -18,10 +18,10 @@ const Index = () => {
   const { error, loading } = useSelector(registerSelector);
 
   const [user, setUser] = React.useState({
-    fullname: 'Ishaq Abdulfatahi',
-    email: 'abfatahi.iaf@gmail.com',
-    password: 'Forloop70!',
-    confirmPass: 'Forloop70!',
+    fullname: '',
+    email: '',
+    password: '',
+    confirmPass: '',
     submitted: false,
   });
 
@@ -89,7 +89,7 @@ const Index = () => {
               <div className='input'>
                 <Inputfield
                   primary
-                  full
+                  // full
                   placeholder='Password'
                   fieldname='password'
                   value={password}
@@ -103,7 +103,7 @@ const Index = () => {
               <div className='input'>
                 <Inputfield
                   primary
-                  full
+                  // full
                   placeholder='Confirm Password'
                   fieldname='confirmPass'
                   value={confirmPass}

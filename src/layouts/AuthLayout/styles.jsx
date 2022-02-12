@@ -8,6 +8,10 @@ export default styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
 
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -64,6 +68,10 @@ export const LeftFrame = styled.div`
 
   h2 {
     font-size: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -134,10 +142,22 @@ export const RightFrame = styled.div`
       width: 80%;
     }
 
+    @media screen and (max-width: 425px) {
+      width: 90%;
+    }
+
     .group {
       width: 100%;
       display: flex;
       gap: 1em;
+
+      @media screen and (max-width: 425px) {
+        flex-direction:column;
+      }
+
+      .input{
+        width:100%;
+      }
     }
   }
 
