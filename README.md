@@ -20,12 +20,12 @@ Note: More details about a transfer can be viewed under the `"Account/Transction
 
 **5:** The `"Logout" tab` on the sidebar and the `"ArrowLeft" icon` available on the navbar is used to logout out of the application.
 
-## NOTE
-Paystack transfer endpoint (Test Mode) returns 
-**{**
-**"status": false,**
- **"message": "Your balance is not enough to fulfil this request"**
-**}**
+## Note
+Paystack transfer endpoint (Test Mode) returns  
+**{**  
+**"status": false,**  
+ **"message": "Your balance is not enough to fulfil this request"**  
+**}**  
 
 hence all transfer initiated were unsuccessful and has a status of **"Rejected"**
 
