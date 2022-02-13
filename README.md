@@ -2,7 +2,7 @@
 
 This project was bootstrapped with `React`, `Redux` and `Styled-components.`
 
-The `Paystack Transfer API [https://paystack.com/docs/transfers/single-transfers]` was leveraged on to simulate online banking functionality with: Realtime Account Number Validation and Initialization of Funds Transfer to destination account. 
+The `Paystack Transfer API` [https://paystack.com/docs/transfers/single-transfers] was leveraged on to simulate online banking functionality with: Realtime Account Number Validation and Initialization of Funds Transfer to destination account. 
 ## Staging Link
 
 The application is hosted at [https://onlinebankapp.vercel.app]
@@ -12,9 +12,9 @@ The application is hosted at [https://onlinebankapp.vercel.app]
 
 **2:** The `User dashboard` is the next screen shown after a successful login. It contains a summary view indicating details such as: User details, account balance details and a table containing the last 5 transactions (transfers).
 
-Note: More details about a transfer can be viewed under the `"Account/Transctions"` tab available from the Sidebar.
+Note: More details about a transfer can be viewed under the `"Account/Transactions"` tab available from the Sidebar.
 
-**3:** Next is the `"Account" screen` where user can view all their transactions and also view more information about individual transaction by clicking the "View" button on the "Action" column of the table showing the list of transfers.
+**3:** Next is the `"Account" screen` where user can view all their transactions and account statement. On the `Transactions tab` user can view more information about individual transaction by clicking the `View` button on the `Action` column of the table showing the list of transfers.
 
 **4:** Next is the `"Transfer" screen` where user can initiate a new funds transfer.
 
