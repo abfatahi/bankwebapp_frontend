@@ -7,6 +7,7 @@ export default styled.div`
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  overflow:hidden !important;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;

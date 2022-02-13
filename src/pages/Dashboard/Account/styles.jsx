@@ -22,6 +22,11 @@ export const CardWrapper = styled.div`
   gap: 2rem;
 `;
 
+export const TableWrapper = styled.div`
+  width: 100%;
+  overflow:auto;
+`;
+
 export const GoBack = styled(FaChevronCircleLeft)`
   width: 1.2rem;
   height: 1.2rem;
